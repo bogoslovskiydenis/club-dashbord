@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col class="text-center test">
-      Inspare Page
+      Registration Page
     </v-col>
   </v-row>
 </template>
