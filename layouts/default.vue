@@ -5,12 +5,6 @@
         <Nuxt />
       </v-container>
     </v-main>
-<<<<<<< HEAD
-=======
-    <v-footer :absolute="!fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }}!!!</span>
-    </v-footer>
->>>>>>> konstantin
   </v-app>
 </template>
 
