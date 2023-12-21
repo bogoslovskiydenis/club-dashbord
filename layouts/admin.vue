@@ -2,9 +2,7 @@
   <v-app dark class="admin_layout">
     <HeaderApp />
     <v-main>
-      <v-container>
         <Nuxt />
-      </v-container>
     </v-main>
     <FooterApp />
   </v-app>

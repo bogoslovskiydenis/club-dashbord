@@ -2,7 +2,7 @@
   <div class="navbar_wrapper">
     <ul>
       <li>
-        <NuxtLink no-prefetch to="/admin/ref-network" aligns="center">
+        <NuxtLink no-prefetch to="/admin" aligns="center">
           главная
         </NuxtLink>
       </li>

@@ -1,7 +1,9 @@
 <template>
   <div class="search">
     <div class="search_wrapper">
-      <a href="">ПОИСК</a>
+      <div class="search_btn">
+          ПОИСК
+      </div>
     </div>
   </div>
 </template>
@@ -30,7 +32,7 @@ export default {
   background: rgba(151, 151, 151, 0.10);
 }
 
-.search_wrapper a {
+.search_btn {
   text-decoration: none;
   flex: 1 0 0;
   color: #FFFEF1;
