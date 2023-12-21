@@ -1,14 +1,16 @@
 <template>
   <v-row>
     <v-col class="text-center test">
-      Registration Page
+      Login Page
+      <NuxtLink  no-prefetch to="/">Registration</NuxtLink> |
+      <NuxtLink  no-prefetch to="/password-recovery">Password Recovery</NuxtLink>
     </v-col>
   </v-row>
 </template>
 
 <script>
 export default {
-  name: 'InspirePage',
+  name: 'LoginPage',
 }
 </script>
 <style scoped>
