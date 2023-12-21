@@ -1,14 +1,13 @@
 <template>
   <header class="header">
-    <nav>
-      <div class="navbar">
-        <Logo/>
-        <NavBarLink/>
-        <SearchBtn/>
-        <Registration/>
-        <LanuageSelector/>
-
-      </div>
+    <nav class="navbar">
+      <v-row justify="center" aligns="center">
+      <Logo/>
+      <NavBarLink/>
+      <SearchBtn/>
+      <Registration/>
+      <LanuageSelector/>
+      </v-row >
     </nav>
   </header>
 </template>
@@ -30,12 +29,22 @@ export default {
 </script>
 <style scoped>
 .header {
-  background: red;
+  margin: 0 auto;
+  display: flex;
+  width: 1440px;
+  height: 60px;
+  padding: 12px 40px;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+  border-bottom: 1px solid #8B8B8B;
+  background: linear-gradient(235deg, #0E0C15 6.76%, #110D18 49.09%, #0F0E1F 93.29%);
 }
 
 .navbar {
   display: flex;
-  width: 1440px;
-  max-width: 100%;
+  align-items: center;
+  gap: 23px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <v-row justify="center" align="center">
+  <v-row  justify="center" aligns="center">
     <h1>Find Partners page</h1>
   </v-row>
 </template>
