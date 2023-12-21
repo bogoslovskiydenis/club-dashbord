@@ -13,7 +13,6 @@
         <NuxtLink no-prefetch to="/admin/transfer-bonuses">Transfer Bonuses</NuxtLink>
       </li>
     </ul>
-
   </div>
 </template>
 
@@ -32,6 +31,7 @@ export default {
 .navbar_wrapper ul {
   gap: 16px;
   display: flex;
+  padding: 0px;
 }
 
 .navbar_wrapper a {

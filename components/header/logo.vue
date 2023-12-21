@@ -18,12 +18,7 @@ export default {
   align-items: center;
 }
 .navbar_logo img{
-  display: flex;
-  width: 95px;
-  height: 31px;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 2.357px;
+ max-width: 100%;
 }
 
 </style>

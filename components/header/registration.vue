@@ -20,7 +20,6 @@ export default {
   padding: 4px 8px;
   justify-content: center;
   align-items: center;
-  gap: 10px;
   border-radius: 16px;
   background: #112130;
 }
