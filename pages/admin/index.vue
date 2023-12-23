@@ -80,8 +80,10 @@
     <div class="history_transfer">
       <div class="c_container">
         <div class="history_transfer_left">
-          <div class="history_transfer_left_text">
-            История начислений
+          <div class="history_transfer_left_border">
+            <div class="history_transfer_left_text">
+              История начислений
+            </div>
           </div>
           <TableApp :header="headers" :history="history">
             <template v-slot:items="props">
@@ -97,14 +99,15 @@
     </div>
 
     <div class="c_container data_transfer">
-      <div class="data_transfer_text">
-        Данные структуры
+      <div class="data_transfer_text_border">
+        <div class="data_transfer_text">
+          Данные структуры
+        </div>
       </div>
-
       <div class="data_transfer_table">
         <TableApp :header="headersBottom" :history="historyBottom">
-          <template v-slot:items="props">
-            <td>{{ props.item.name }}</td>
+          <template v-slot:header="props">
+            <td class="red"> {{ props.item.name }} </td>
             <td class="text-xs-right">{{ props.item.bonus }}</td>
             <td class="text-xs-right">{{ props.item.allmoney }}</td>
             <td class="text-xs-right">{{ props.item.test }}</td>
@@ -147,29 +150,41 @@ export default {
         },
       ],
       headersBottom: [
-        {text: 'Дата', align: 'left', sortable: false, value: 'name'},
-        {text: 'Тип бонуса', value: 'bonus'},
-        {text: 'Сумма', value: 'allmoney'},
-        {text: 'Test', value: 'test'},
+        {text: 'Дата', align: 'left', sortable: false, value: 'datatime'},
+        {text: 'Время', value: 'time'},
+        {text: 'Никнейм', value: 'nickname'},
+        {text: 'Сумма', value: 'sum'},
+        {text: 'Бонус', value: 'bonus'},
+
       ],
       historyBottom: [
         {
-          name: '9-10-2023 8:37',
-          bonus: 'За структуру',
-          allmoney: "$ 12345678",
-          test: 'Test'
+          datatime: '9-10-2023',
+          time: "8:37",
+          nickname: "Елтон Джон",
+          sum: '$ 12345678',
+          bonus: '$ 12345678',
         },
         {
-          name: '9-10-2023 8:37',
-          bonus: 'Бонус пула',
-          allmoney: "$ 12345678",
-          test: 'Test'
+          datatime: '9-10-2023',
+          time: "8:37",
+          nickname: "Рикки Мартин",
+          sum: '$ 12345678',
+          bonus: '$ 12345678',
         },
         {
-          name: '9-10-2023 8:37',
-          bonus: 'За достижение',
-          allmoney: "$ 12345678",
-          test: 'Test'
+          datatime: '9-10-2023',
+          time: "8:37",
+          nickname: "Джордж Майкл",
+          sum: '$ 12345678',
+          bonus: '$ 12345678',
+        },
+        {
+          datatime: '9-10-2023',
+          time: "8:37",
+          nickname: "Елтон Джон",
+          sum: '$ 12345678',
+          bonus: '$ 12345678',
         },
       ],
     }
@@ -249,14 +264,40 @@ export default {
   width: 50%;
 }
 
+.history_transfer_left_border {
+  display: flex;
+  padding: 24px 0px 28px 24px;
+  align-items: center;
+  flex-shrink: 0;
+  align-self: stretch;
+}
 
-.data_transfer_text{
-  color:  #FFFEF1;
+.data_transfer_text {
+  color: #FFFEF1;
   /* Title/04 */
-  font-family: "Inter" , sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
   line-height: 20px; /* 100% */
 }
+
+.history_transfer_left_text {
+  color: #FFFEF1;
+  /* Title/04 */
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 100% */
+}
+
+.data_transfer_text_border {
+  display: flex;
+  padding: 24px 0px 28px 24px;
+  align-items: center;
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
 </style>

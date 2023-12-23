@@ -2,7 +2,7 @@
   <v-data-table
     :headers="header"
     :items="history"
-    class="elevation-1"
+    class="elevation-1 "
   >
     <slot />
   </v-data-table>
@@ -34,5 +34,6 @@ export default {
 </script>
 
 <style>
-
+.test{
+}
 </style>
