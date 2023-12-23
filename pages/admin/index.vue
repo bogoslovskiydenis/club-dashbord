@@ -78,19 +78,103 @@
     </div>
 
     <div class="history_transfer">
-      <div class="history_transfer_left"></div>
-      <div class="history_transfer_right"></div>
+      <div class="c_container">
+        <div class="history_transfer_left">
+          <div class="history_transfer_left_text">
+            История начислений
+          </div>
+          <TableApp :header="headers" :history="history">
+            <template v-slot:items="props">
+              <td>{{ props.item.name }}</td>
+              <td class="text-xs-right">{{ props.item.bonus }}</td>
+              <td class="text-xs-right">{{ props.item.allmoney }}</td>
+            </template>
+          </TableApp>
+        </div>
+        <div class="history_transfer_right">
+        </div>
+      </div>
     </div>
-    <div class="data_transfer">
 
+    <div class="c_container data_transfer">
+      <div class="data_transfer_text">
+        Данные структуры
+      </div>
+
+      <div class="data_transfer_table">
+        <TableApp :header="headersBottom" :history="historyBottom">
+          <template v-slot:items="props">
+            <td>{{ props.item.name }}</td>
+            <td class="text-xs-right">{{ props.item.bonus }}</td>
+            <td class="text-xs-right">{{ props.item.allmoney }}</td>
+            <td class="text-xs-right">{{ props.item.test }}</td>
+          </template>
+        </TableApp>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import TableApp from '~/components/table/table'
+
 export default {
   name: 'AdminMainPage',
+  components: {TableApp},
   layout: "admin",
+  data() {
+    return {
+      headers: [
+        {text: 'Дата', align: 'left', sortable: false, value: 'name'},
+        {text: 'Тип бонуса', value: 'bonus'},
+        {text: 'Сумма', value: 'allmoney'},
+      ],
+      history: [
+        {
+          name: '9-10-2023 8:37',
+          bonus: 'За структуру',
+          allmoney: "$ 12345678",
+        },
+        {
+          name: '9-10-2023 8:37',
+          bonus: 'Бонус пула',
+          allmoney: "$ 12345678",
+        },
+        {
+          name: '9-10-2023 8:37',
+          bonus: 'За достижение',
+          allmoney: "$ 12345678",
+        },
+      ],
+      headersBottom: [
+        {text: 'Дата', align: 'left', sortable: false, value: 'name'},
+        {text: 'Тип бонуса', value: 'bonus'},
+        {text: 'Сумма', value: 'allmoney'},
+        {text: 'Test', value: 'test'},
+      ],
+      historyBottom: [
+        {
+          name: '9-10-2023 8:37',
+          bonus: 'За структуру',
+          allmoney: "$ 12345678",
+          test: 'Test'
+        },
+        {
+          name: '9-10-2023 8:37',
+          bonus: 'Бонус пула',
+          allmoney: "$ 12345678",
+          test: 'Test'
+        },
+        {
+          name: '9-10-2023 8:37',
+          bonus: 'За достижение',
+          allmoney: "$ 12345678",
+          test: 'Test'
+        },
+      ],
+    }
+  }
+
 }
 </script>
 
@@ -149,5 +233,30 @@ export default {
   font-style: normal;
   font-weight: 500;
   line-height: 20px; /* 83.333% */
+}
+
+.history_transfer {
+  max-width: 100%;
+  border: 1px solid red;
+}
+
+.history_transfer_left {
+  width: 50%;
+  border: 1px solid white;
+}
+
+.history_transfer_right {
+  width: 50%;
+}
+
+
+.data_transfer_text{
+  color:  #FFFEF1;
+  /* Title/04 */
+  font-family: "Inter" , sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 100% */
 }
 </style>
