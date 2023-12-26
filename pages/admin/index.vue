@@ -77,27 +77,31 @@
       </div>
     </div>
 
-    <div class="history_transfer">
-      <div class="c_container">
-        <div class="history_transfer_left">
-          <div class="history_transfer_left_border">
-            <div class="history_transfer_left_text">
-              История начислений
-            </div>
+    <div class=" c_container history_transfer">
+      <div class="history_transfer_left">
+        <div class="history_transfer_left_border">
+          <div class="history_transfer_left_text">
+            История начислений
           </div>
-          <TableApp :header="headers" :history="history">
-            <template v-slot:items="props">
-              <td>{{ props.item.name }}</td>
-              <td class="text-xs-right">{{ props.item.bonus }}</td>
-              <td class="text-xs-right">{{ props.item.allmoney }}</td>
-            </template>
-          </TableApp>
         </div>
-        <div class="history_transfer_right">
-        </div>
+        <TableApp :header="headers" :history="history">
+          <template v-slot:items="props">
+            <td>{{ props.item.name }}</td>
+            <td class="text-xs-right">{{ props.item.bonus }}</td>
+            <td class="text-xs-right">{{ props.item.allmoney }}</td>
+          </template>
+        </TableApp>
+      </div>
+      <div class="history_transfer_right">
+        <template>
+          <Doughnut
+            id="my-chart-id"
+            :chart-options="chartOptions"
+            :chart-data="chartData"
+          />
+        </template>
       </div>
     </div>
-
     <div class="c_container data_transfer">
       <div class="data_transfer_text_border">
         <div class="data_transfer_text">
@@ -107,7 +111,7 @@
       <div class="data_transfer_table">
         <TableApp :header="headersBottom" :history="historyBottom">
           <template v-slot:header="props">
-            <td class="red"> {{ props.item.name }} </td>
+            <td class="red"> {{ props.item.name }}</td>
             <td class="text-xs-right">{{ props.item.bonus }}</td>
             <td class="text-xs-right">{{ props.item.allmoney }}</td>
             <td class="text-xs-right">{{ props.item.test }}</td>
@@ -115,15 +119,21 @@
         </TableApp>
       </div>
     </div>
+
   </div>
 </template>
 
 <script>
+import {Doughnut} from 'vue-chartjs'
+import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js'
 import TableApp from '~/components/table/table'
+
+ChartJS.register(ArcElement, Tooltip, Legend)
+
 
 export default {
   name: 'AdminMainPage',
-  components: {TableApp},
+  components: {TableApp, Doughnut},
   layout: "admin",
   data() {
     return {
@@ -187,9 +197,18 @@ export default {
           bonus: '$ 12345678',
         },
       ],
+      chartData: {
+        labels: ['January', 'February', 'March'],
+        datasets: [{
+          backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+          data: [40, 20, 80, 10]
+        }]
+      },
+      chartOptions: {
+        responsive: true
+      }
     }
   }
-
 }
 </script>
 
@@ -251,6 +270,7 @@ export default {
 }
 
 .history_transfer {
+  display: flex;
   max-width: 100%;
   border: 1px solid red;
 }
