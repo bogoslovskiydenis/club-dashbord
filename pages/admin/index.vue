@@ -206,7 +206,8 @@ export default {
       },
       chartOptions: {
         responsive: true
-      }
+      },
+
     }
   }
 }

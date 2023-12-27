@@ -5,9 +5,37 @@
         Трансфер бонусов
       </div>
     </div>
-    <div class="search">
-      <img src="/tether.svg" alt="">
-      <input placeholder="Адрес вывода">
+    <div class="address_container">
+      <div class="custom-input">
+        <label :class="{ 'active': inputValue }">Адрес вывода</label>
+        <input v-model="inputValue" @input="onInput" class="input_text"/>
+        <img src="/tether.svg" alt="Icon" class="custom-icon"/>
+      </div>
+      <div class="available_container">
+        <div class="available">
+          Доступно
+        </div>
+        <div class="available_money">
+          <img src="/tether.svg" alt="">
+          100,889.05 USDT
+        </div>
+      </div>
+      <div class="input_sum_container">
+        <div class="input_sum_container_input">
+          <input v-model="inputValue2" placeholder="Ввести сумму" class="input_text" @input="onInput"/>
+
+        </div>
+      </div>
+      <div class="input_btn_sum">
+        <v-btn
+          width="180px"
+          rounded="16"
+          min-width="164"
+          color="#C500CB"
+        >
+          Вывести
+        </v-btn>
+      </div>
     </div>
 
   </div>
@@ -17,42 +45,104 @@
 export default {
   name: 'TransferBonusesPage',
   layout: "admin",
+  data() {
+    return {
+      inputValue: '',
+      inputValue2: "",
+      iconSrc: '/tether.svg'
+    };
+  },
+  methods: {
+    onInput() {
+    }
+  }
 }
 </script>
 
 <style>
-.search {
-  position: relative;
-  color: #aaa;
-  font-size: 16px;
-}
 
-.search {
-  display: inline-block;
-}
-
-.search input {
-  width: 444.667px;
+.input_sum_container {
+  width: 352px;
   max-width: 100%;
-  background: #fcfcfc;
-  border: 1px solid #aaa;
+  position: relative;
+  margin-bottom: 20px;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.08);
 }
+::placeholder {
+  color: rgba(255, 255, 255, 0.45);
 
-.search input {
-  text-indent: 32px;
+  /* Input/Value */
+  font-family: "Inter" ,sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 142.857% */
 }
 
-.search img {
+.address_container {
+  display: flex;
+
+}
+
+.input_text {
+  color: #FFF;
+
+  /* Input/Value */
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 142.857% */
+}
+
+.custom-input {
+  width: 444.667px;
+  max-width: 100%;
+  position: relative;
+  margin-bottom: 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
+
+}
+
+label {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  pointer-events: none;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: 0.2s ease all;
+  color: rgba(255, 255, 255, 0.50);
+
+  /* Input/Label2 */
+  font-family: "Inter",sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
 }
 
-.search img {
-  left: auto;
-  right: 10px;
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid blue;
+  border-radius: 5px;
+  outline: none;
+}
+
+.active {
+  transform: translateY(-20px);
+  font-size: 0.8em;
+  color: rgba(255, 255, 255, 0.50);
+}
+
+.custom-icon {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
 }
 
 .transfer_title {
