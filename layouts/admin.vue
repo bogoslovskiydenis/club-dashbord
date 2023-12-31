@@ -21,6 +21,9 @@ export default {
 }
 </script>
 <style>
+.wrapper_container{
+  padding-top: 37px;
+}
 .c_container {
   width: 1180px;
   max-width: 90%;
@@ -29,6 +32,7 @@ export default {
 }
 </style>
 <style scoped>
+
 .admin_layout {
   background:  linear-gradient(235deg, #0E0C15 6.76%, #110D18 49.09%, #0F0E1F 93.29%);
 }
