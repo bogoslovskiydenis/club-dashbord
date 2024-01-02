@@ -2,18 +2,19 @@
   <div class="form_wrapper">
     <FormContainer>
       <div class="input_wrapper">
-        <input class="input" placeholder="Логин" />
+        <input class="input" placeholder="Никнейм" />
+      </div>
+      <div class="input_wrapper">
+        <input class="input" placeholder="Cryptoch ID" />
+      </div>
+      <div class="input_wrapper">
+        <input class="input" placeholder="Почта" />
       </div>
       <div class="input_wrapper">
         <input class="input" placeholder="Пароль" />
       </div>
-      <div class="wrapper_text">
-        <NuxtLink to="/password-recovery" class="forgot_password">
-          Забыл пароль
-        </NuxtLink>
-      </div>
       <div class="btn_wrapper">
-        <button class="btn">Вход</button>
+        <button class="btn">Зарегистрироваться</button>
       </div>
     </FormContainer>
   </div>
