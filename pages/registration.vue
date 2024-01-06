@@ -14,17 +14,42 @@
         <input class="input" placeholder="Пароль" />
       </div>
       <div class="btn_wrapper">
-        <button class="btn">Зарегистрироваться</button>
+        <button class="btn" @click="onClickSend">Зарегистрироваться</button>
       </div>
     </FormContainer>
+    <RegisterSuccess
+      v-if="isShowSuccess"
+      @onClickClose="closeRegisterSuccess"
+    />
+    <RegisterFail v-if="isShowFail" @onClickClose="closeRegisterFail" />
   </div>
 </template>
 
 <script>
 import FormContainer from '~/components/form_container/form-container.vue'
+import RegisterSuccess from '~/components/pop_up/registration/success.vue'
+import RegisterFail from '~/components/pop_up/registration/fail.vue'
 export default {
   name: 'LoginPage',
-  components: { FormContainer },
+  components: { FormContainer, RegisterSuccess, RegisterFail },
+  data() {
+    return {
+      isShowSuccess: true,
+      isShowFail: false,
+    }
+  },
+  methods: {
+    closeRegisterSuccess() {
+      this.isShowSuccess = false
+    },
+    closeRegisterFail() {
+      this.isShowFail = false
+    },
+    onClickSend() {
+      // this.isShowSuccess = true
+      this.isShowFail = true
+    },
+  },
 }
 </script>
 <style scoped></style>

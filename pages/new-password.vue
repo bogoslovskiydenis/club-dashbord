@@ -3,10 +3,13 @@
     <FormContainer>
       <div class="text_wrapper">Восстановление пароля</div>
       <div class="input_wrapper">
-        <input class="input" placeholder="Введите Никнейм или Криптач ID" />
+        <input class="input" placeholder="Введите новый пароль" />
+      </div>
+      <div class="input_wrapper">
+        <input class="input" placeholder="Введите новый пароль" />
       </div>
       <div class="btn_wrapper">
-        <button class="btn" @click="onSend">Отправить</button>
+        <button class="btn">Отправить</button>
       </div>
     </FormContainer>
   </div>
@@ -15,13 +18,8 @@
 <script>
 import FormContainer from '~/components/form_container/form-container.vue'
 export default {
-  name: 'PasswordRecovery',
+  name: 'NewPassword',
   components: { FormContainer },
-  methods: {
-    onSend() {
-      this.$router.push('new-password')
-    },
-  },
 }
 </script>
 <style scoped>

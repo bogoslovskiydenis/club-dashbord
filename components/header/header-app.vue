@@ -1,24 +1,24 @@
 <template>
   <header class="header">
     <div class="c_container header_container">
-      <Logo/>
-      <NavBarLink/>
-      <SearchBtn/>
-      <Registration/>
-      <LanuageSelector/>
+      <Logo />
+      <NavBarLink />
+      <SearchBtn />
+      <Registration />
+      <LanuageSelector />
     </div>
   </header>
 </template>
 <script>
 import Logo from './logo.vue'
-import NavBarLink from "./navbar.vue"
-import SearchBtn from "./search-btn.vue"
-import Registration from "./registration.vue";
-import LanuageSelector from "./language-selector.vue";
+import NavBarLink from './navbar.vue'
+import SearchBtn from './search-btn.vue'
+import Registration from './registration.vue'
+import LanuageSelector from './language-selector.vue'
 
 export default {
   name: 'HeaderApp',
-  components: {Logo, NavBarLink, SearchBtn, Registration, LanuageSelector},
+  components: { Logo, NavBarLink, SearchBtn, Registration, LanuageSelector },
 
   data() {
     return {}
@@ -28,6 +28,7 @@ export default {
 <style scoped>
 .header {
   padding: 12px 0px;
+  border-bottom: 1px solid #8b8b8b;
 }
 .header_container {
   display: flex;

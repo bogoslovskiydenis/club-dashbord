@@ -14,7 +14,7 @@ export default {
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: #0e081a;
   width: 656px;
-  max-width: 90%;
+  max-width: 100%;
   padding: 45px 88px;
   background-image: url('/left_bg_form.png'), url('/right_bg_form.png');
   background-position: left top, right bottom;
