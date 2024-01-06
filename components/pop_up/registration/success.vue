@@ -1,10 +1,8 @@
 <template>
   <PopUpContainer @onClickClose="onClickClose">
     <FormContainer>
-      <div class="title">Регистрация успешна</div>
-      <div class="icon_wrapper">
-        <img src="/success_icon.svg" class="icon" />
-      </div>
+      <PopUpTitle title="Регистрация успешна" />
+      <PopUpIcon src="/success_icon.svg" />
     </FormContainer>
   </PopUpContainer>
 </template>
@@ -12,9 +10,11 @@
 <script>
 import FormContainer from '~/components/form_container/form-container.vue'
 import PopUpContainer from '~/components/pop_up/container.vue'
+import PopUpTitle from '~/components/pop_up/title.vue'
+import PopUpIcon from '~/components/pop_up/icon.vue'
 export default {
   name: 'RegisterSuccess',
-  components: { FormContainer, PopUpContainer },
+  components: { FormContainer, PopUpContainer, PopUpTitle, PopUpIcon },
   methods: {
     onClickClose() {
       this.$emit('onClickClose')
@@ -22,28 +22,4 @@ export default {
   },
 }
 </script>
-<style scoped>
-.title {
-  color: #fffef1;
-  text-align: center;
-  text-shadow: 0px 0px 80px #17181d;
-  font-family: 'Inter';
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  letter-spacing: 1.3px;
-  opacity: 0.5;
-}
-.icon_wrapper {
-  padding-top: 44px;
-  padding-bottom: 44px;
-  text-align: center;
-}
-@media (max-width: 767px) {
-  .icon_wrapper {
-    padding-top: 24px;
-    padding-bottom: 0px;
-  }
-}
-</style>
+<style scoped></style>
