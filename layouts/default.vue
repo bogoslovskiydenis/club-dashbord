@@ -1,5 +1,6 @@
 <template>
   <v-app dark>
+    <HeaderApp />
     <v-main>
       <Nuxt />
     </v-main>
@@ -7,8 +8,10 @@
 </template>
 
 <script>
+import HeaderApp from '~/components/header/header-app.vue'
 export default {
   name: 'DefaultLayout',
+  components: { HeaderApp },
   data() {
     return {}
   },
