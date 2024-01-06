@@ -72,4 +72,7 @@ input:focus {
   display: flex;
   justify-content: center;
 }
+.content_form_wrapper {
+  max-width: 90%;
+}
 </style>

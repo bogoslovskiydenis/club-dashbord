@@ -40,4 +40,10 @@ export default {
   padding-bottom: 44px;
   text-align: center;
 }
+@media (max-width: 767px) {
+  .icon_wrapper {
+    padding-top: 24px;
+    padding-bottom: 0px;
+  }
+}
 </style>

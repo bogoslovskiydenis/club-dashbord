@@ -1,17 +1,19 @@
 <template>
   <div class="form_wrapper">
-    <FormContainer>
-      <div class="text_wrapper">Восстановление пароля</div>
-      <div class="input_wrapper">
-        <input class="input" placeholder="Введите новый пароль" />
-      </div>
-      <div class="input_wrapper">
-        <input class="input" placeholder="Введите новый пароль" />
-      </div>
-      <div class="btn_wrapper">
-        <button class="btn">Отправить</button>
-      </div>
-    </FormContainer>
+    <div class="content_form_wrapper">
+      <FormContainer>
+        <div class="text_wrapper">Восстановление пароля</div>
+        <div class="input_wrapper">
+          <input class="input" placeholder="Введите новый пароль" />
+        </div>
+        <div class="input_wrapper">
+          <input class="input" placeholder="Введите новый пароль" />
+        </div>
+        <div class="btn_wrapper">
+          <button class="btn">Отправить</button>
+        </div>
+      </FormContainer>
+    </div>
   </div>
 </template>
 

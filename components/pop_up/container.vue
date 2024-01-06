@@ -41,4 +41,9 @@ export default {
   right: 10px;
   top: 10px;
 }
+@media (max-width: 767px) {
+  .wrapper_content {
+    max-width: 90%;
+  }
+}
 </style>

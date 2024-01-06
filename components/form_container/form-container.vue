@@ -20,4 +20,9 @@ export default {
   background-position: left top, right bottom;
   background-repeat: no-repeat, no-repeat;
 }
+@media (max-width: 767px) {
+  .form_container {
+    padding: 45px 25px;
+  }
+}
 </style>

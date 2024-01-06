@@ -36,4 +36,9 @@ export default {
   gap: 15px;
   align-items: center;
 }
+@media (max-width: 767px) {
+  .header {
+    display: none;
+  }
+}
 </style>
