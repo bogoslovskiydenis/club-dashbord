@@ -1,10 +1,39 @@
 <template>
   <header class="header">
-    Header test
+    <div class="c_container header_container">
+      <Logo/>
+      <NavBarLink/>
+      <SearchBtn/>
+      <Registration/>
+      <LanuageSelector/>
+    </div>
   </header>
 </template>
+<script>
+import Logo from './logo.vue'
+import NavBarLink from "./navbar.vue"
+import SearchBtn from "./search-btn.vue"
+import Registration from "./registration.vue";
+import LanuageSelector from "./language-selector.vue";
+
+export default {
+  name: 'HeaderApp',
+  components: {Logo, NavBarLink, SearchBtn, Registration, LanuageSelector},
+
+  data() {
+    return {}
+  },
+}
+</script>
 <style scoped>
 .header {
-  background: red;
+  border: 1px solid red;
+  padding: 12px 0px;
+}
+.header_container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
 }
 </style>
