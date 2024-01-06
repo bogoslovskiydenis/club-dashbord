@@ -1,10 +1,4 @@
 <template>
-  <footer class="footer">
-    Footer
-  </footer>
+  <footer class="footer"></footer>
 </template>
-<style scoped>
-.footer {
-  background: red;
-}
-</style>
+<style scoped></style>
