@@ -27,7 +27,6 @@ export default {
 </script>
 <style scoped>
 .header {
-  border: 1px solid red;
   padding: 12px 0px;
 }
 .header_container {

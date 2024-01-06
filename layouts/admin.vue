@@ -28,7 +28,6 @@ export default {
   width: 1180px;
   max-width: 90%;
   margin: 0 auto;
-  border: 1px solid green;
 }
 </style>
 <style scoped>
