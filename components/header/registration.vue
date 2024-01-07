@@ -1,16 +1,21 @@
 <template>
   <div class="reg_button">
-    <a href="">
-      вход
-
-    </a>
-
+    <button v-if="login" href="" @click="onLogout">{{ t('EXIT') }}</button>
+    <button v-else href="">{{ t('ENTER') }}</button>
   </div>
 </template>
 
 <script>
+import userMixin from '~/mixins/user.js'
+import translate from '~/mixins/translate'
 export default {
-  name: "RegistrationBtn"
+  name: 'RegistrationBtn',
+  mixins: [userMixin, translate],
+  methods: {
+    onLogout() {
+      this.logout()
+    },
+  },
 }
 </script>
 
@@ -26,9 +31,9 @@ export default {
 
 .reg_button a {
   text-decoration: none;
-  color: #FFFEF1;
+  color: #fffef1;
   text-align: center;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;

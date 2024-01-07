@@ -1,29 +1,26 @@
 <template>
   <div class="language_selector">
     <div class="flag">
-      <img src="/flag.svg" alt="">
-      <div class="flag_text">
-        РУС
-
-      </div>
+      <img src="/flag.svg" alt="" />
+      <div class="flag_text">РУС</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Language-selector"
+  name: 'LanguageSelector',
 }
 </script>
 
 <style scoped>
-.flag{
+.flag {
   display: flex;
 }
-.flag_text{
-  color:  #8B8B8B;
+.flag_text {
+  color: #8b8b8b;
   /* Title/09 */
-  font-family: "Inter" , sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;

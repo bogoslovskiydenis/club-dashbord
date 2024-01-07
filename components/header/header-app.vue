@@ -5,7 +5,7 @@
       <NavBarLink />
       <SearchBtn />
       <Registration />
-      <LanuageSelector />
+      <LanguageSelector />
     </div>
   </header>
 </template>
@@ -14,12 +14,10 @@ import Logo from './logo.vue'
 import NavBarLink from './navbar.vue'
 import SearchBtn from './search-btn.vue'
 import Registration from './registration.vue'
-import LanuageSelector from './language-selector.vue'
-
+import LanguageSelector from './language-selector.vue'
 export default {
   name: 'HeaderApp',
-  components: { Logo, NavBarLink, SearchBtn, Registration, LanuageSelector },
-
+  components: { Logo, NavBarLink, SearchBtn, Registration, LanguageSelector },
   data() {
     return {}
   },

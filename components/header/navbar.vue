@@ -1,24 +1,33 @@
 <template>
   <div class="navbar_wrapper">
     <ul>
-      <li>
-        <NuxtLink no-prefetch to="/admin" aligns="center">
-          главная
+      <li v-for="item in menu[config.LANG]" :key="item.title">
+        <NuxtLink no-prefetch :to="item.link" aligns="center">
+          {{ item.title }}
         </NuxtLink>
-      </li>
-      <li>
-        <NuxtLink no-prefetch to="/admin/find-partners">Find partners</NuxtLink>
-      </li>
-      <li>
-        <NuxtLink no-prefetch to="/admin/transfer-bonuses">Transfer Bonuses</NuxtLink>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import translate from '~/mixins/translate'
 export default {
-  name: "NavBarLink"
+  name: 'NavBarLink',
+  mixins: [translate],
+  data() {
+    return {
+      menu: {
+        RU: [
+          { title: 'главная', link: '/admin' },
+          { title: 'Партнерская сеть', link: '/admin/find-partners' },
+          { title: 'Трансфер бонусов', link: '/admin/transfer-bonuses' },
+        ],
+        EN: [],
+        UA: [],
+      },
+    }
+  },
 }
 </script>
 
@@ -35,10 +44,10 @@ export default {
 }
 
 .navbar_wrapper a {
-  color: rgba(204, 204, 204, 0.50);
+  color: rgba(204, 204, 204, 0.5);
 
   text-align: center;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;

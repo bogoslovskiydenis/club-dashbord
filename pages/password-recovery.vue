@@ -2,12 +2,15 @@
   <div class="form_wrapper">
     <div class="content_form_wrapper">
       <FormContainer>
-        <div class="text_wrapper">Восстановление пароля</div>
+        <div class="text_wrapper">{{ t('PASSWORD_RECOVERY') }}</div>
         <div class="input_wrapper">
-          <input class="input" placeholder="Введите Никнейм или Криптач ID" />
+          <input
+            class="input"
+            :placeholder="t('ENTER_NICKNAME_OR_CRYPTACH_ID')"
+          />
         </div>
         <div class="btn_wrapper">
-          <button class="btn" @click="onSend">Отправить</button>
+          <button class="btn" @click="onSend">{{ t('SEND') }}</button>
         </div>
       </FormContainer>
     </div>
@@ -16,9 +19,11 @@
 
 <script>
 import FormContainer from '~/components/form_container/form-container.vue'
+import translate from '~/mixins/translate'
 export default {
   name: 'PasswordRecovery',
   components: { FormContainer },
+  mixins: [translate],
   methods: {
     onSend() {
       this.$router.push('new-password')
