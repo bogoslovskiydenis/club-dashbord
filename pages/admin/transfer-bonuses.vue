@@ -41,18 +41,95 @@
         </div>
       </div>
     </div>
+    <div class="history_payment">
+      <div class="history_payment_text">
+        История выводов
+      </div>
+      <TableApp :header="headers" :history="history">
+
+      <template v-slot:items="props">
+          <td class="red"> {{ props.item.name }}</td>
+          <td class="text-xs-right">{{ props.item.bonus }}</td>
+          <td class="text-xs-right">{{ props.item.allmoney }}</td>
+          <td class="text-xs-right">{{ props.item.test }}</td>
+        </template>
+      </TableApp>
+
+    </div>
   </div>
 </template>
 
 <script>
+import TableApp from "@/components/table/table.vue";
+
 export default {
   name: 'TransferBonusesPage',
+  components: {TableApp},
   layout: "admin",
   data() {
     return {
       inputValue: '',
       inputValue2: "",
-      iconSrc: '/tether.svg'
+      iconSrc: '/tether.svg',
+      headers: [
+        {text: 'Дата', align: 'left', sortable: false, value: 'name'},
+        {text: 'Статус', value: 'status'},
+        {text: 'Сумма', value: 'allmoney'},
+      ],
+      history: [
+        {
+          name: '9-10-2023 8:00',
+          status: 'В ОБРАБОТКЕ',
+          allmoney: "$ 100",
+        },
+        {
+          name: '9-10-2023 8:01',
+          status: 'УСПЕШНО',
+          allmoney: "$ 102",
+        },
+        {
+          name: '9-10-2023 8:02',
+          status: 'ОТКЛОНЕНО',
+          allmoney: "$ 103",
+        },
+        {
+          name: '9-10-2023 8:03',
+          status: 'ОТКЛОНЕНО',
+          allmoney: "$ 10131",
+        },{
+          name: '9-10-2023 8:37',
+          status: 'ОТКЛОНЕНО',
+          allmoney: "$ 1312312",
+        },{
+          name: '9-10-2023 8:37',
+          status: 'ОТКЛОНЕНО',
+          allmoney: "$ 12345678",
+        },{
+          name: '9-10-2023 8:37',
+          status: 'ОТКЛОНЕНО',
+          allmoney: "$ 12345678",
+        },{
+          name: '9-10-2023 8:37',
+          status: 'ОТКЛОНЕНО',
+          allmoney: "$ 12345678",
+        },{
+          name: '9-10-2023 8:37',
+          status: 'ОТКЛОНЕНО',
+          allmoney: "$ 12345678",
+        },{
+          name: '9-10-2023 8:37',
+          status: 'ОТКЛОНЕНО',
+          allmoney: "$ 12345678",
+        },{
+          name: '9-10-2023 8:37',
+          status: 'ОТКЛОНЕНО',
+          allmoney: "$ 12345678",
+        },{
+          name: '9-10-2023 8:37',
+          status: 'ОТКЛОНЕНО',
+          allmoney: "$ 12345678",
+        },
+      ],
     };
   },
   methods: {
@@ -132,6 +209,7 @@ export default {
 }
 
 .custom-input {
+  /*height: 56px;*/
   width: 444.667px;
   max-width: 100%;
   position: relative;
@@ -161,7 +239,6 @@ label {
 input {
   width: 100%;
   padding: 10px;
-  border: 1px solid blue;
   border-radius: 5px;
   outline: none;
 }
@@ -181,9 +258,9 @@ input {
 }
 
 .transfer_title {
+  padding: 20px;
   border-radius: 12px;
   border: 1px solid #A783F3;
-
   background: rgba(255, 255, 255, 0.20);
 }
 
@@ -196,5 +273,20 @@ input {
   font-weight: 700;
   line-height: normal;
   letter-spacing: 0.72px;
+}
+
+.history_payment {
+  padding-top: 37px;
+}
+
+.history_payment_text {
+  padding: 24px 28px 24px 28px;
+  color: #FFFEF1;
+  /* Title/04 */
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 100% */
 }
 </style>
