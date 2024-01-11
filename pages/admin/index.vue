@@ -317,7 +317,6 @@ export default {
 }
 @media (max-width: 768px) {
   .cards_wrapper{
-    gap: 8px;
   }
 }
 </style>
