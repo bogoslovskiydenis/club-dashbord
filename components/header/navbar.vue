@@ -55,4 +55,16 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+@media (max-width: 768px) {
+  .navbar_wrapper a{
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 375px) {
+.navbar_wrapper  ul{
+    display: none;
+  }
+}
 </style>

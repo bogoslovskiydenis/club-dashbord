@@ -93,13 +93,11 @@
         </TableApp>
       </div>
       <div class="history_transfer_right">
-        <template>
           <Doughnut
             id="my-chart-id"
             :chart-options="chartOptions"
             :chart-data="chartData"
           />
-        </template>
       </div>
     </div>
     <div class="c_container data_transfer">
@@ -219,7 +217,7 @@ export default {
   justify-content: space-between;
   padding-top: 65px;
   padding-bottom: 35px;
-  border: 1px solid white;
+  gap: 20px;
 }
 
 .cards {
@@ -272,13 +270,10 @@ export default {
 
 .history_transfer {
   display: flex;
-  max-width: 100%;
-  border: 1px solid red;
 }
 
 .history_transfer_left {
   width: 50%;
-  border: 1px solid white;
 }
 
 .history_transfer_right {
@@ -320,5 +315,9 @@ export default {
   flex-shrink: 0;
   align-self: stretch;
 }
-
+@media (max-width: 768px) {
+  .cards_wrapper{
+    gap: 8px;
+  }
+}
 </style>

@@ -14,7 +14,7 @@
         <div class="profiles_text">
           Данные участников сетки
         </div>
-        <TableApp :header="headersBottom" :history="historyBottom">
+        <TableApp :header="datatable" :history="historyfind">
           <template v-slot:header="props">
             <td class="red"> {{ props.item.name }}</td>
             <td class="text-xs-right">{{ props.item.bonus }}</td>
@@ -33,8 +33,73 @@ import TableApp from '~/components/table/table.vue'
 
 export default {
   name: 'FindPartnersPage',
-  layout: "admin",
   components: {TableApp},
+  layout: "admin",
+  data() {
+    return {
+      datatable: [
+        {text: 'Никнейм', align: 'left', sortable: false, value: 'nickname'},
+        {text: 'Уровень', value: 'levl'},
+        {text: 'Сумма', value: 'allmoney'},
+      ],
+      historyfind: [
+        {
+          nickname: 'Елтон Джон1',
+          levl: 1,
+          allmoney: "$ 56565",
+        },
+        {
+          nickname: 'Елтон Джон2',
+          levl: 2,
+          allmoney: "$ 42323",
+        },
+        {
+          nickname: 'Елтон Джон3',
+          levl: 3,
+          allmoney: "$ 44523",
+        },
+        {
+          nickname: 'Елтон Джон4',
+          levl: 4,
+          allmoney: "$ 89898",
+        },
+        {
+          nickname: 'Елтон Джон5',
+          levl: 5,
+          allmoney: "$ 7687",
+        },
+        {
+          nickname: 'Елтон Джон11',
+          levl: 1,
+          allmoney: "$ 464",
+        },
+        {
+          nickname: 'Елтон Джон14',
+          levl: 4,
+          allmoney: "$ 135",
+        },
+        {
+          nickname: 'Елтон Джон13',
+          levl: 3,
+          allmoney: "$ 111",
+        },
+        {
+          nickname: 'Елтон Джон12',
+          levl: 2,
+          allmoney: "$ 231",
+        }, {
+          nickname: 'Елтон Джон111',
+          levl: 1,
+          allmoney: "$ 232",
+        },
+        {
+          nickname: 'Елтон Джон1123',
+          levl: 1,
+          allmoney: "$ 312312",
+        },
+      ]
+    }
+  }
 }
 </script>
 
@@ -88,6 +153,10 @@ export default {
   font-style: normal;
   font-weight: 500;
   line-height: 20px; /* 100% */
+}
+
+@media (max-width: 768px) {
+
 }
 
 </style>

@@ -27,6 +27,7 @@ export default {
 </script>
 <style scoped>
 .header {
+  width: 100%;
   padding: 12px 0px;
   border-bottom: 1px solid #8b8b8b;
 }
@@ -38,7 +39,7 @@ export default {
 }
 @media (max-width: 767px) {
   .header {
-    display: none;
+    /*display: flex;*/
   }
 }
 </style>
