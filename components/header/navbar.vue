@@ -1,6 +1,15 @@
 <template>
-  <div class="navbar_wrapper">
-    <ul>
+  <div class="navbar_wrapper" :class="{active: hide}">
+
+    <v-icon
+      large
+      color="black"
+      class="burger_icon"
+      @click="toggle"
+    >
+      mdi-message-text
+    </v-icon>
+    <ul >
       <li>
         <NuxtLink no-prefetch to="/admin" aligns="center">
           главная
@@ -18,7 +27,26 @@
 
 <script>
 export default {
-  name: "NavBarLink"
+  name: "NavBarLink",
+  props: {
+    show: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      hide: false
+    }
+  },
+  methods: {
+    toggle() {
+      this.hide = true
+    }
+  },
+  mounted() {
+    this.hide = !this.show
+  }
 }
 </script>
 
@@ -26,6 +54,7 @@ export default {
 .navbar_wrapper {
   display: flex;
   align-items: center;
+  transition: 0.7s;
 }
 
 .navbar_wrapper ul {
@@ -36,7 +65,6 @@ export default {
 
 .navbar_wrapper a {
   color: rgba(204, 204, 204, 0.50);
-
   text-align: center;
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
@@ -57,8 +85,34 @@ a {
 }
 
 @media (max-width: 768px) {
+  .burger_icon {
+    position: absolute;
+    top:10px;
+    right:10px;
+  }
+  .navbar_wrapper{
+    position: relative;
+  }
+  .navbar_wrapper.active {
+    transform: translateX(-100%);
+  }
   .navbar_wrapper a{
     font-size: 9px;
+  }
+  .navbar_wrapper {
+    position: fixed;
+    background: rgba(204, 204, 204, 0.50);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .navbar_wrapper ul {
+    border: 1px solid red;
   }
 }
 

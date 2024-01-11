@@ -2,10 +2,11 @@
   <header class="header">
     <div class="c_container header_container">
       <Logo />
-      <NavBarLink />
+      <NavBarLink :show="isShowMenu"/>
       <SearchBtn />
       <Registration />
       <LanuageSelector />
+      <button @click="showMenu">test</button>
     </div>
   </header>
 </template>
@@ -19,9 +20,15 @@ import LanuageSelector from './language-selector.vue'
 export default {
   name: 'HeaderApp',
   components: { Logo, NavBarLink, SearchBtn, Registration, LanuageSelector },
-
+  methods: {
+    showMenu() {
+      this.isShowMenu = true
+    }
+  },
   data() {
-    return {}
+    return {
+      isShowMenu: false
+    }
   },
 }
 </script>
