@@ -84,7 +84,13 @@ a {
   text-decoration: none;
   color: inherit;
 }
+.burger_icon {
+  display: none;
+}
 @media (max-width: 768px) {
+  .burger_icon {
+    display: block;
+  }
   .burger_icon {
     position: absolute;
     top: 11px;

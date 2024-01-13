@@ -24,7 +24,7 @@
 import Logo from './logo.vue'
 import NavBarLink from './navbar.vue'
 import SearchBtn from './search-btn.vue'
-import Registration from './registration.vue'
+import Registration from './registrationBtn.vue'
 import LanguageSelector from './language-selector.vue'
 import device from '~/mixins/device'
 export default {

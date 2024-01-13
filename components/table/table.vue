@@ -1,15 +1,14 @@
 <template>
   <v-data-table
-    :hide-actions="true"
+    :hide-default-footer="true"
     :headers="header"
     :items="history"
-    class="elevation-1 "
+    class="elevation-1"
   >
     <slot />
   </v-data-table>
 </template>
 <script>
-
 export default {
   name: 'TableApp',
   props: {
@@ -23,18 +22,16 @@ export default {
       type: Array,
       default() {
         return []
-      }
+      },
     },
   },
   data() {
-    return {
-
-    }
-  }
+    return {}
+  },
 }
 </script>
 
 <style>
-.test{
+.test {
 }
 </style>
