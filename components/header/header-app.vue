@@ -2,10 +2,11 @@
   <header class="header">
     <div class="c_container header_container">
       <Logo />
-      <NavBarLink />
+      <NavBarLink :show="isShowMenu" />
       <SearchBtn />
       <Registration />
       <LanguageSelector />
+      <button @click="showMenu">test</button>
     </div>
   </header>
 </template>
@@ -19,12 +20,20 @@ export default {
   name: 'HeaderApp',
   components: { Logo, NavBarLink, SearchBtn, Registration, LanguageSelector },
   data() {
-    return {}
+    return {
+      isShowMenu: false,
+    }
+  },
+  methods: {
+    showMenu() {
+      this.isShowMenu = true
+    },
   },
 }
 </script>
 <style scoped>
 .header {
+  width: 100%;
   padding: 12px 0px;
   border-bottom: 1px solid #8b8b8b;
 }
@@ -36,7 +45,7 @@ export default {
 }
 @media (max-width: 767px) {
   .header {
-    display: none;
+    /*display: flex;*/
   }
 }
 </style>

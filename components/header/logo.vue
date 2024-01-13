@@ -22,8 +22,8 @@ export default {
 
 .navbar_logo img {
   max-width: 100%;
+  width: 95px;
 }
-
 </style>
 
 

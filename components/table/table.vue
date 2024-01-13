@@ -1,5 +1,6 @@
 <template>
   <v-data-table
+    :hide-actions="true"
     :headers="header"
     :items="history"
     class="elevation-1 "
@@ -16,14 +17,14 @@ export default {
       type: Array,
       default() {
         return []
-      }
+      },
     },
     history: {
       type: Array,
       default() {
         return []
       }
-    }
+    },
   },
   data() {
     return {

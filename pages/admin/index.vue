@@ -78,12 +78,13 @@
     </div>
 
     <div class=" c_container history_transfer">
-      <div class="history_transfer_left">
-        <div class="history_transfer_left_border">
-          <div class="history_transfer_left_text">
-            История начислений
-          </div>
+      <div class="history_transfer_left_border">
+        <div class="history_transfer_left_text">
+          История начислений
         </div>
+      </div>
+      <div class="history_transfer_wrapper">
+      <div class="history_transfer_left">
         <TableApp :header="headers" :history="history">
           <template v-slot:items="props">
             <td>{{ props.item.name }}</td>
@@ -93,13 +94,12 @@
         </TableApp>
       </div>
       <div class="history_transfer_right">
-        <template>
-          <Doughnut
-            id="my-chart-id"
-            :chart-options="chartOptions"
-            :chart-data="chartData"
-          />
-        </template>
+        <Doughnut
+          id="my-chart-id"
+          :chart-options="chartOptions"
+          :chart-data="chartData"
+        />
+      </div>
       </div>
     </div>
     <div class="c_container data_transfer">
@@ -144,16 +144,56 @@ export default {
       ],
       history: [
         {
-          name: '9-10-2023 8:37',
+          name: '9-10-2023 8:01',
           bonus: 'За структуру',
+          allmoney: "$ 12312",
+        },
+        {
+          name: '9-10-2023 8:32',
+          bonus: 'Бонус пула',
+          allmoney: "$ 13131256",
+        },
+        {
+          name: '9-10-2023 8:37',
+          bonus: 'За достижение',
           allmoney: "$ 12345678",
         },
         {
           name: '9-10-2023 8:37',
-          bonus: 'Бонус пула',
+          bonus: 'За достижение',
           allmoney: "$ 12345678",
         },
         {
+          name: '9-10-2023 8:37',
+          bonus: 'За достижение',
+          allmoney: "$ 12345678",
+        },
+        {
+          name: '9-10-2023 8:37',
+          bonus: 'За достижение',
+          allmoney: "$ 12345678",
+        },{
+          name: '9-10-2023 10:00',
+          bonus: 'За достижение',
+          allmoney: "$ 989898",
+        },
+        {
+          name: '9-10-2023 8:37',
+          bonus: 'За достижение',
+          allmoney: "$ 12345678",
+        },{
+          name: '9-10-2023 8:37',
+          bonus: 'За достижение',
+          allmoney: "$ 12345678",
+        },{
+          name: '9-10-2023 8:37',
+          bonus: 'За достижение',
+          allmoney: "$ 12345678",
+        },{
+          name: '9-10-2023 8:37',
+          bonus: 'За достижение',
+          allmoney: "$ 12345678",
+        },{
           name: '9-10-2023 8:37',
           bonus: 'За достижение',
           allmoney: "$ 12345678",
@@ -196,6 +236,68 @@ export default {
           sum: '$ 12345678',
           bonus: '$ 12345678',
         },
+        {
+          datatime: '9-10-2023',
+          time: "8:37",
+          nickname: "Елтон Джон",
+          sum: '$ 12345678',
+          bonus: '$ 12345678',
+        }, {
+          datatime: '9-10-2023',
+          time: "8:37",
+          nickname: "Елтон Джон",
+          sum: '$ 12345678',
+          bonus: '$ 12345678',
+        }, {
+          datatime: '9-10-2023',
+          time: "8:37",
+          nickname: "Елтон Джон",
+          sum: '$ 12345678',
+          bonus: '$ 12345678',
+        }, {
+          datatime: '9-10-2023',
+          time: "8:37",
+          nickname: "Елтон Джон",
+          sum: '$ 12345678',
+          bonus: '$ 12345678',
+        }, {
+          datatime: '9-10-2023',
+          time: "8:37",
+          nickname: "Елтон Джон",
+          sum: '$ 12345678',
+          bonus: '$ 12345678',
+        }, {
+          datatime: '9-10-2023',
+          time: "8:37",
+          nickname: "Елтон Джон",
+          sum: '$ 12345678',
+          bonus: '$ 12345678',
+        },
+        {
+          datatime: '9-10-2023',
+          time: "8:37",
+          nickname: "Елтон Джон",
+          sum: '$ 12345678',
+          bonus: '$ 12345678',
+        }, {
+          datatime: '9-10-2023',
+          time: "8:37",
+          nickname: "Елтон Джон",
+          sum: '$ 12345678',
+          bonus: '$ 12345678',
+        }, {
+          datatime: '9-10-2023',
+          time: "8:37",
+          nickname: "Елтон Джон",
+          sum: '$ 12345678',
+          bonus: '$ 12345678',
+        }, {
+          datatime: '9-10-2023',
+          time: "8:37",
+          nickname: "Елтон Джон",
+          sum: '$ 12345678',
+          bonus: '$ 12345678',
+        },
       ],
       chartData: {
         labels: ['January', 'February', 'March'],
@@ -219,7 +321,7 @@ export default {
   justify-content: space-between;
   padding-top: 65px;
   padding-bottom: 35px;
-  border: 1px solid white;
+  gap: 20px;
 }
 
 .cards {
@@ -270,15 +372,12 @@ export default {
   line-height: 20px; /* 83.333% */
 }
 
-.history_transfer {
+.history_transfer_wrapper {
   display: flex;
-  max-width: 100%;
-  border: 1px solid red;
 }
 
 .history_transfer_left {
   width: 50%;
-  border: 1px solid white;
 }
 
 .history_transfer_right {
@@ -321,4 +420,15 @@ export default {
   align-self: stretch;
 }
 
+@media (max-width: 768px) {
+  .cards_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 8px;
+  }
+  .history_transfer_wrapper{
+    flex-direction: column;
+  }
+}
 </style>

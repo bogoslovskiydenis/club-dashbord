@@ -289,4 +289,10 @@ input {
   font-weight: 500;
   line-height: 20px; /* 100% */
 }
+@media (max-width: 768px) {
+  .address_container{
+    flex-wrap: wrap;
+    /*display: compact;*/
+  }
+}
 </style>
