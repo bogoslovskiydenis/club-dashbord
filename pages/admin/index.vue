@@ -3,115 +3,89 @@
     <div class="c_container cards_wrapper">
       <div class="cards">
         <div class="cards_inf">
-          <div class="card_text_top">
-            Номер Пула
-          </div>
+          <div class="card_text_top">Номер Пула</div>
           <div class="card_text_descr_bottom">
             <div class="card_img">
-              <img src="/card_img.svg" alt="">
+              <img src="/card_img.svg" alt="" />
             </div>
-            <div class="card_text_descr">
-              Пул № 1
-
+            <div class="card_text_descr">Пул № 1</div>
+          </div>
+        </div>
+      </div>
+      <div class="cards">
+        <div class="cards_inf">
+          <div class="card_text_top">Уровень аккаунта</div>
+          <div class="card_text_descr_bottom">
+            <div class="card_text_descr">№3</div>
+          </div>
+        </div>
+      </div>
+      <div class="cards">
+        <div class="cards_inf">
+          <div class="card_text_top">Текущий бонус уровня</div>
+          <div class="card_text_descr_bottom">
+            <div class="card_text_descr">100</div>
+            <div class="card_img">
+              <img src="/tether.svg" alt="" />
             </div>
           </div>
         </div>
       </div>
       <div class="cards">
         <div class="cards_inf">
-          <div class="card_text_top">
-            Уровень аккаунта
-          </div>
+          <div class="card_text_top">Сумма до следующего уровня</div>
           <div class="card_text_descr_bottom">
-            <div class="card_text_descr">
-              №3
+            <div class="card_text_descr">100</div>
+            <div class="card_img">
+              <img src="/tether.svg" alt="" />
             </div>
           </div>
         </div>
       </div>
       <div class="cards">
         <div class="cards_inf">
-          <div class="card_text_top">
-            Текущий бонус уровня
-          </div>
+          <div class="card_text_top">Баланс бонусов</div>
           <div class="card_text_descr_bottom">
-            <div class="card_text_descr">
-              100
-            </div>
+            <div class="card_text_descr">100</div>
             <div class="card_img">
-              <img src="/tether.svg" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="cards">
-        <div class="cards_inf">
-          <div class="card_text_top">
-            Сумма до следующего уровня
-          </div>
-          <div class="card_text_descr_bottom">
-            <div class="card_text_descr">
-              100
-
-            </div>
-            <div class="card_img">
-              <img src="/tether.svg" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="cards">
-        <div class="cards_inf">
-          <div class="card_text_top">
-            Баланс бонусов
-          </div>
-          <div class="card_text_descr_bottom">
-            <div class="card_text_descr">
-              100
-            </div>
-            <div class="card_img">
-              <img src="/tether.svg" alt="">
+              <img src="/tether.svg" alt="" />
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class=" c_container history_transfer">
+    <div class="c_container history_transfer">
       <div class="history_transfer_left_border">
-        <div class="history_transfer_left_text">
-          История начислений
-        </div>
+        <div class="history_transfer_left_text">История начислений</div>
       </div>
       <div class="history_transfer_wrapper">
-      <div class="history_transfer_left">
-        <TableApp :header="headers" :history="history">
-          <template v-slot:items="props">
-            <td>{{ props.item.name }}</td>
-            <td class="text-xs-right">{{ props.item.bonus }}</td>
-            <td class="text-xs-right">{{ props.item.allmoney }}</td>
-          </template>
-        </TableApp>
-      </div>
-      <div class="history_transfer_right">
-        <Doughnut
-          id="my-chart-id"
-          :chart-options="chartOptions"
-          :chart-data="chartData"
-        />
-      </div>
+        <div class="history_transfer_left">
+          <TableApp :header="headers" :history="history">
+            <template #items="props">
+              <td>{{ props.item.name }}</td>
+              <td class="text-xs-right">{{ props.item.bonus }}</td>
+              <td class="text-xs-right">{{ props.item.allmoney }}</td>
+            </template>
+          </TableApp>
+        </div>
+        <div class="history_transfer_right">
+          <Doughnut
+            id="my-chart-id"
+            :chart-options="chartOptions"
+            :chart-data="chartData"
+          />
+        </div>
       </div>
     </div>
     <div class="c_container data_transfer">
       <div class="data_transfer_text_border">
-        <div class="data_transfer_text">
-          Данные структуры
-        </div>
+        <div class="data_transfer_text">Данные структуры</div>
       </div>
       <div class="data_transfer_table">
         <TableApp :header="headersBottom" :history="historyBottom">
-          <template v-slot:header="props">
-            <td class="red"> {{ props.item.name }}</td>
+          <template #header="props">
+            <td class="red">{{ props.item.name }}</td>
             <td class="text-xs-right">{{ props.item.bonus }}</td>
             <td class="text-xs-right">{{ props.item.allmoney }}</td>
             <td class="text-xs-right">{{ props.item.test }}</td>
@@ -119,203 +93,214 @@
         </TableApp>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
-import {Doughnut} from 'vue-chartjs'
-import {Chart as ChartJS, ArcElement, Tooltip, Legend} from 'chart.js'
+import { Doughnut } from 'vue-chartjs'
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import TableApp from '~/components/table/table'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
-
 export default {
   name: 'AdminMainPage',
-  components: {TableApp, Doughnut},
-  layout: "admin",
+  components: { TableApp, Doughnut },
+  layout: 'admin',
   data() {
     return {
       headers: [
-        {text: 'Дата', align: 'left', sortable: false, value: 'name'},
-        {text: 'Тип бонуса', value: 'bonus'},
-        {text: 'Сумма', value: 'allmoney'},
+        { text: 'Дата', align: 'left', sortable: false, value: 'name' },
+        { text: 'Тип бонуса', value: 'bonus' },
+        { text: 'Сумма', value: 'allmoney' },
       ],
       history: [
         {
           name: '9-10-2023 8:01',
           bonus: 'За структуру',
-          allmoney: "$ 12312",
+          allmoney: '$ 12312',
         },
         {
           name: '9-10-2023 8:32',
           bonus: 'Бонус пула',
-          allmoney: "$ 13131256",
+          allmoney: '$ 13131256',
         },
         {
           name: '9-10-2023 8:37',
           bonus: 'За достижение',
-          allmoney: "$ 12345678",
+          allmoney: '$ 12345678',
         },
         {
           name: '9-10-2023 8:37',
           bonus: 'За достижение',
-          allmoney: "$ 12345678",
+          allmoney: '$ 12345678',
         },
         {
           name: '9-10-2023 8:37',
           bonus: 'За достижение',
-          allmoney: "$ 12345678",
+          allmoney: '$ 12345678',
         },
         {
           name: '9-10-2023 8:37',
           bonus: 'За достижение',
-          allmoney: "$ 12345678",
-        },{
+          allmoney: '$ 12345678',
+        },
+        {
           name: '9-10-2023 10:00',
           bonus: 'За достижение',
-          allmoney: "$ 989898",
+          allmoney: '$ 989898',
         },
         {
           name: '9-10-2023 8:37',
           bonus: 'За достижение',
-          allmoney: "$ 12345678",
-        },{
+          allmoney: '$ 12345678',
+        },
+        {
           name: '9-10-2023 8:37',
           bonus: 'За достижение',
-          allmoney: "$ 12345678",
-        },{
+          allmoney: '$ 12345678',
+        },
+        {
           name: '9-10-2023 8:37',
           bonus: 'За достижение',
-          allmoney: "$ 12345678",
-        },{
+          allmoney: '$ 12345678',
+        },
+        {
           name: '9-10-2023 8:37',
           bonus: 'За достижение',
-          allmoney: "$ 12345678",
-        },{
+          allmoney: '$ 12345678',
+        },
+        {
           name: '9-10-2023 8:37',
           bonus: 'За достижение',
-          allmoney: "$ 12345678",
+          allmoney: '$ 12345678',
         },
       ],
       headersBottom: [
-        {text: 'Дата', align: 'left', sortable: false, value: 'datatime'},
-        {text: 'Время', value: 'time'},
-        {text: 'Никнейм', value: 'nickname'},
-        {text: 'Сумма', value: 'sum'},
-        {text: 'Бонус', value: 'bonus'},
-
+        { text: 'Дата', align: 'left', sortable: false, value: 'datatime' },
+        { text: 'Время', value: 'time' },
+        { text: 'Никнейм', value: 'nickname' },
+        { text: 'Сумма', value: 'sum' },
+        { text: 'Бонус', value: 'bonus' },
       ],
       historyBottom: [
         {
           datatime: '9-10-2023',
-          time: "8:37",
-          nickname: "Елтон Джон",
+          time: '8:37',
+          nickname: 'Елтон Джон',
           sum: '$ 12345678',
           bonus: '$ 12345678',
         },
         {
           datatime: '9-10-2023',
-          time: "8:37",
-          nickname: "Рикки Мартин",
+          time: '8:37',
+          nickname: 'Рикки Мартин',
           sum: '$ 12345678',
           bonus: '$ 12345678',
         },
         {
           datatime: '9-10-2023',
-          time: "8:37",
-          nickname: "Джордж Майкл",
+          time: '8:37',
+          nickname: 'Джордж Майкл',
           sum: '$ 12345678',
           bonus: '$ 12345678',
         },
         {
           datatime: '9-10-2023',
-          time: "8:37",
-          nickname: "Елтон Джон",
+          time: '8:37',
+          nickname: 'Елтон Джон',
           sum: '$ 12345678',
           bonus: '$ 12345678',
         },
         {
           datatime: '9-10-2023',
-          time: "8:37",
-          nickname: "Елтон Джон",
-          sum: '$ 12345678',
-          bonus: '$ 12345678',
-        }, {
-          datatime: '9-10-2023',
-          time: "8:37",
-          nickname: "Елтон Джон",
-          sum: '$ 12345678',
-          bonus: '$ 12345678',
-        }, {
-          datatime: '9-10-2023',
-          time: "8:37",
-          nickname: "Елтон Джон",
-          sum: '$ 12345678',
-          bonus: '$ 12345678',
-        }, {
-          datatime: '9-10-2023',
-          time: "8:37",
-          nickname: "Елтон Джон",
-          sum: '$ 12345678',
-          bonus: '$ 12345678',
-        }, {
-          datatime: '9-10-2023',
-          time: "8:37",
-          nickname: "Елтон Джон",
-          sum: '$ 12345678',
-          bonus: '$ 12345678',
-        }, {
-          datatime: '9-10-2023',
-          time: "8:37",
-          nickname: "Елтон Джон",
+          time: '8:37',
+          nickname: 'Елтон Джон',
           sum: '$ 12345678',
           bonus: '$ 12345678',
         },
         {
           datatime: '9-10-2023',
-          time: "8:37",
-          nickname: "Елтон Джон",
+          time: '8:37',
+          nickname: 'Елтон Джон',
           sum: '$ 12345678',
           bonus: '$ 12345678',
-        }, {
+        },
+        {
           datatime: '9-10-2023',
-          time: "8:37",
-          nickname: "Елтон Джон",
+          time: '8:37',
+          nickname: 'Елтон Джон',
           sum: '$ 12345678',
           bonus: '$ 12345678',
-        }, {
+        },
+        {
           datatime: '9-10-2023',
-          time: "8:37",
-          nickname: "Елтон Джон",
+          time: '8:37',
+          nickname: 'Елтон Джон',
           sum: '$ 12345678',
           bonus: '$ 12345678',
-        }, {
+        },
+        {
           datatime: '9-10-2023',
-          time: "8:37",
-          nickname: "Елтон Джон",
+          time: '8:37',
+          nickname: 'Елтон Джон',
+          sum: '$ 12345678',
+          bonus: '$ 12345678',
+        },
+        {
+          datatime: '9-10-2023',
+          time: '8:37',
+          nickname: 'Елтон Джон',
+          sum: '$ 12345678',
+          bonus: '$ 12345678',
+        },
+        {
+          datatime: '9-10-2023',
+          time: '8:37',
+          nickname: 'Елтон Джон',
+          sum: '$ 12345678',
+          bonus: '$ 12345678',
+        },
+        {
+          datatime: '9-10-2023',
+          time: '8:37',
+          nickname: 'Елтон Джон',
+          sum: '$ 12345678',
+          bonus: '$ 12345678',
+        },
+        {
+          datatime: '9-10-2023',
+          time: '8:37',
+          nickname: 'Елтон Джон',
+          sum: '$ 12345678',
+          bonus: '$ 12345678',
+        },
+        {
+          datatime: '9-10-2023',
+          time: '8:37',
+          nickname: 'Елтон Джон',
           sum: '$ 12345678',
           bonus: '$ 12345678',
         },
       ],
       chartData: {
         labels: ['January', 'February', 'March'],
-        datasets: [{
-          backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
-          data: [40, 20, 80, 10]
-        }]
+        datasets: [
+          {
+            backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
+            data: [40, 20, 80, 10],
+          },
+        ],
       },
       chartOptions: {
-        responsive: true
+        responsive: true,
       },
-
     }
-  }
+  },
 }
 </script>
 
-<style>
+<style scoped>
 .cards_wrapper {
   display: flex;
   justify-content: space-between;
@@ -331,9 +316,9 @@ export default {
   align-items: center;
   align-self: stretch;
   border-radius: 12px;
-  border: 1px solid #A783F3;
+  border: 1px solid #a783f3;
 
-  background: rgba(255, 255, 255, 0.20);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .cards_inf {
@@ -345,9 +330,9 @@ export default {
 }
 
 .card_text_top {
-  color: #FFFEF1;
+  color: #fffef1;
   text-align: right;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -363,9 +348,9 @@ export default {
 }
 
 .card_text_descr {
-  color: rgba(255, 255, 255, 0.80);
+  color: rgba(255, 255, 255, 0.8);
   padding-left: 18px;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 500;
@@ -393,9 +378,9 @@ export default {
 }
 
 .data_transfer_text {
-  color: #FFFEF1;
+  color: #fffef1;
   /* Title/04 */
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
@@ -403,9 +388,9 @@ export default {
 }
 
 .history_transfer_left_text {
-  color: #FFFEF1;
+  color: #fffef1;
   /* Title/04 */
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
@@ -424,10 +409,10 @@ export default {
   .cards_wrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 8px;
   }
-  .history_transfer_wrapper{
+  .history_transfer_wrapper {
     flex-direction: column;
   }
 }

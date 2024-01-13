@@ -1,9 +1,12 @@
 <template>
-  <div class="navbar_wrapper">
+  <div class="navbar_wrapper" :class="{ active: stateMenu }">
+    <v-icon large color="white" class="burger_icon" @click="hideMenu">
+      mdi-backburger
+    </v-icon>
     <ul>
       <li v-for="item in menu[config.LANG]" :key="item.title">
         <NuxtLink no-prefetch :to="item.link" aligns="center">
-          {{ item.title }}
+          <span @click="hideMenu">{{ item.title }}</span>
         </NuxtLink>
       </li>
     </ul>
@@ -15,6 +18,12 @@ import translate from '~/mixins/translate'
 export default {
   name: 'NavBarLink',
   mixins: [translate],
+  props: {
+    show: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
       menu: {
@@ -27,6 +36,17 @@ export default {
         UA: [],
       },
     }
+  },
+  computed: {
+    stateMenu() {
+      const menu = this.$store.getters['menu/getStateMenu']
+      return menu.isOpen
+    },
+  },
+  methods: {
+    hideMenu() {
+      this.$store.dispatch('menu/setStateMenu', false)
+    },
   },
 }
 </script>
@@ -63,5 +83,47 @@ li {
 a {
   text-decoration: none;
   color: inherit;
+}
+@media (max-width: 768px) {
+  .burger_icon {
+    position: absolute;
+    top: 11px;
+    right: 20px;
+  }
+  .navbar_wrapper {
+    position: relative;
+  }
+  .navbar_wrapper.active {
+    transform: translateX(0%);
+  }
+  .navbar_wrapper a {
+    font-size: 9px;
+  }
+  .navbar_wrapper {
+    position: fixed;
+    background: rgba(15, 14, 31, 0.5);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-100%);
+    transition: 0.7s;
+  }
+  .navbar_wrapper ul {
+    flex-wrap: wrap;
+  }
+  .navbar_wrapper ul li {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  .navbar_wrapper ul li a {
+    color: white;
+    font-size: 15px;
+  }
 }
 </style>

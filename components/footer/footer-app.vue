@@ -1,4 +1,8 @@
 <template>
   <footer class="footer"></footer>
 </template>
-<style scoped></style>
+<style scoped>
+.footer {
+  height: 25px;
+}
+</style>

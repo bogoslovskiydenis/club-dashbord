@@ -2,11 +2,21 @@
   <header class="header">
     <div class="c_container header_container">
       <Logo />
-      <NavBarLink :show="isShowMenu" />
-      <SearchBtn />
-      <Registration />
-      <LanguageSelector />
-      <button @click="showMenu">test</button>
+      <NavBarLink />
+      <SearchBtn v-if="device !== 'MOB'" />
+      <div class="header_right">
+        <Registration />
+        <LanguageSelector />
+        <v-icon
+          v-if="device !== 'DC'"
+          large
+          color="white"
+          :class="{ hide: stateBurger }"
+          @click="showMenu"
+        >
+          mdi-menu
+        </v-icon>
+      </div>
     </div>
   </header>
 </template>
@@ -16,17 +26,20 @@ import NavBarLink from './navbar.vue'
 import SearchBtn from './search-btn.vue'
 import Registration from './registration.vue'
 import LanguageSelector from './language-selector.vue'
+import device from '~/mixins/device'
 export default {
   name: 'HeaderApp',
   components: { Logo, NavBarLink, SearchBtn, Registration, LanguageSelector },
-  data() {
-    return {
-      isShowMenu: false,
-    }
+  mixins: [device],
+  computed: {
+    stateBurger() {
+      const menu = this.$store.getters['menu/getStateMenu']
+      return menu.isOpen
+    },
   },
   methods: {
     showMenu() {
-      this.isShowMenu = true
+      this.$store.dispatch('menu/setStateMenu', true)
     },
   },
 }
@@ -43,9 +56,20 @@ export default {
   gap: 15px;
   align-items: center;
 }
+.header_right {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
 @media (max-width: 767px) {
-  .header {
-    /*display: flex;*/
+  .hide {
+    opacity: 0;
+  }
+  .header_container {
+    justify-content: space-between;
+  }
+  .header_right {
+    gap: 10px;
   }
 }
 </style>
