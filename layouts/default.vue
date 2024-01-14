@@ -77,7 +77,7 @@ input:focus {
 }
 @media screen and (orientation: landscape) {
   .form_wrapper {
-    height: auto;
+    min-height: 100vh;
     padding-bottom: 50px;
   }
 }
