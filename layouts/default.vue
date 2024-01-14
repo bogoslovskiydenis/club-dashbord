@@ -75,4 +75,10 @@ input:focus {
 .content_form_wrapper {
   max-width: 90%;
 }
+@media screen and (orientation: landscape) {
+  .form_wrapper {
+    height: auto;
+    padding-bottom: 50px;
+  }
+}
 </style>
