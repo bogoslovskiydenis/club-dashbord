@@ -90,7 +90,7 @@ a {
 .burger_icon {
   display: none;
 }
-@media (max-width: 768px) {
+@media (max-width: 1199px) {
   .burger_icon {
     display: block;
   }
@@ -134,8 +134,6 @@ a {
     color: white;
     font-size: 15px;
   }
-}
-@media (max-width: 1199px) {
   .navbar_wrapper {
     flex-wrap: wrap;
   }
