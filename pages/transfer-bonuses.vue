@@ -7,25 +7,28 @@
       <div class="address_container">
         <div class="custom-input">
           <label :class="{ active: inputValue }">Адрес вывода</label>
-          <input v-model="inputValue" class="input_text" @input="onInput" />
-          <img src="/tether.svg" alt="Icon" class="custom-icon" />
+          <input v-model="inputValue" class="input_text" @input="onInput"/>
+          <img src="/tether.svg" alt="Icon" class="custom-icon"/>
         </div>
         <div class="available_container">
           <div class="available">Доступно</div>
           <div class="available_money">
-            <img src="/tether.svg" alt="" />
+            <img src="/tether.svg" alt=""/>
             <div class="available_money_text">100,889.05 USDT</div>
           </div>
         </div>
         <div class="input_sum_container">
-          <div class="input_sum_container_input">
-            <input
-              v-model="inputValue2"
-              placeholder="Ввести сумму"
-              class="input_text"
-              @input="onInput"
-            />
-          </div>
+          <input
+            v-model="inputValue2"
+            placeholder="Ввести сумму"
+            class="input_text"
+            @input="onInput"
+          />
+          <button class="btn_max">
+            <div class="text_max">
+              MAX
+            </div>
+          </button>
         </div>
         <div class="input_btn_sum">
           <v-btn width="180px" rounded min-width="164" color="#C500CB">
@@ -53,7 +56,7 @@ import TableApp from '@/components/table/table.vue'
 
 export default {
   name: 'TransferBonusesPage',
-  components: { TableApp },
+  components: {TableApp},
   layout: 'admin',
   data() {
     return {
@@ -61,9 +64,9 @@ export default {
       inputValue2: '',
       iconSrc: '/tether.svg',
       headers: [
-        { text: 'Дата', align: 'left', sortable: false, value: 'name' },
-        { text: 'Статус', value: 'status' },
-        { text: 'Сумма', value: 'allmoney' },
+        {text: 'Дата', align: 'left', sortable: false, value: 'name'},
+        {text: 'Статус', value: 'status'},
+        {text: 'Сумма', value: 'allmoney'},
       ],
       history: [
         {
@@ -130,7 +133,8 @@ export default {
     }
   },
   methods: {
-    onInput() {},
+    onInput() {
+    },
   },
 }
 </script>
@@ -155,7 +159,8 @@ export default {
 .available_money_text {
   align-self: stretch;
   color: #fff;
-
+  display: flex;
+  align-items: center;
   /* Input/Value */
   font-family: 'Inter', sans-serif;
   font-size: 14px;
@@ -171,6 +176,34 @@ export default {
   margin-bottom: 20px;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.08);
+}
+
+.input_sum_container .btn_max {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+}
+
+.btn_max {
+  display: flex;
+  padding: 10px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 16px;
+  background: #112130;
+}
+
+.text_max {
+  color: #FFFEF1;
+  text-align: center;
+  /* Header/1024/H-04 */
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
 }
 
 ::placeholder {
@@ -205,7 +238,7 @@ export default {
 }
 
 .custom-input {
-  /*height: 56px;*/
+  height: 56px;
   width: 444.667px;
   max-width: 100%;
   position: relative;
@@ -233,7 +266,7 @@ label {
 
 input {
   width: 100%;
-  padding: 10px;
+  padding: 20px;
   border-radius: 5px;
   outline: none;
 }
@@ -284,6 +317,7 @@ input {
   font-weight: 500;
   line-height: 20px; /* 100% */
 }
+
 @media (max-width: 768px) {
   .address_container {
     flex-wrap: wrap;
