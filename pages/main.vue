@@ -284,15 +284,17 @@ export default {
         },
       ],
       chartData: {
-        labels: ['January', 'February', 'March'],
+        labels: ['Петя', 'Вася', 'Коля' , 'Жеея' , 'Леша' , 'Jack'],
         datasets: [
           {
-            backgroundColor: ['#41B883', '#E46651', '#00D8FF', '#DD1B16'],
-            data: [40, 20, 80, 10],
+            backgroundColor: ['#2bc71a', '#E46651', '#00D8FF', '#c79f1b','#c2369a','#c2369a'],
+            data: [40, 20, 80, 10, 30,11, 25],
           },
         ],
       },
       chartOptions: {
+        borderRadius: 2,
+        hoverBorderWidth: 0,
         responsive: true,
       },
     }
@@ -362,11 +364,14 @@ export default {
 }
 
 .history_transfer_left {
-  width: 50%;
+  width: 60%;
 }
 
 .history_transfer_right {
-  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
 }
 
 .history_transfer_left_border {
@@ -414,9 +419,17 @@ export default {
   }
   .history_transfer_wrapper {
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .history_transfer_left{
     width: 100%;
+  }
+  .history_transfer_right{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 </style>
