@@ -71,6 +71,9 @@ export default {
   gap: 15px;
 }
 @media (max-width: 767px) {
+  .mobile_wrapper{
+    display: flex;
+  }
   .hide {
     opacity: 0;
   }

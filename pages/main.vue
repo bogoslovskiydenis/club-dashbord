@@ -415,5 +415,8 @@ export default {
   .history_transfer_wrapper {
     flex-direction: column;
   }
+  .history_transfer_left{
+    width: 100%;
+  }
 }
 </style>
