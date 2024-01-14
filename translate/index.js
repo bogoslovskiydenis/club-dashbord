@@ -73,5 +73,10 @@ export default {
         UA: 'Реєстрація успішна',
         RU: 'Регистрация успешна',
         EN: 'Register success'
+    },
+    SEARCH: {
+        UA: 'пошук',
+        RU: 'поиск',
+        EN: 'search'
     }
 }

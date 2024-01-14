@@ -38,6 +38,7 @@ export default {
         session: 'fsdfvxcadasda',
       }
       this.setUser(user)
+      this.$router.push('/main')
     },
   },
 }

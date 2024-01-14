@@ -1,19 +1,20 @@
 <template>
   <div class="navbar_logo">
-    <NuxtLink no-prefetch to="/admin" aligns="center">
-      <img src="/Logo.png" width="150px" class="logo"/>
+    <NuxtLink no-prefetch :to="login ? '/main' : '/'" aligns="center">
+      <img src="/Logo.png" width="150px" class="logo" />
     </NuxtLink>
   </div>
 </template>
 
 <script>
+import userMixin from '~/mixins/user'
 export default {
   name: 'LogoApp',
+  mixins: [userMixin],
 }
 </script>
 
 <style>
-
 .navbar_logo {
   display: flex;
   justify-content: center;
@@ -25,5 +26,3 @@ export default {
   width: 95px;
 }
 </style>
-
-

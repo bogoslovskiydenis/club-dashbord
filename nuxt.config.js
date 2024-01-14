@@ -21,7 +21,8 @@ export default {
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat&display=swap",
         rel: "stylesheet"
       },
-    ],
+      {rel:"stylesheet", type: "text/css", href: "/css/style.css"}
+    ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

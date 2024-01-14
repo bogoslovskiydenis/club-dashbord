@@ -1,6 +1,6 @@
 <template>
   <v-data-table
-    :hide-default-footer="true"
+    :hide-default-footer="false"
     :headers="header"
     :items="history"
     class="elevation-1"

@@ -10,6 +10,7 @@
         </NuxtLink>
       </li>
     </ul>
+    <slot></slot>
   </div>
 </template>
 
@@ -28,9 +29,9 @@ export default {
     return {
       menu: {
         RU: [
-          { title: 'главная', link: '/admin' },
-          { title: 'Партнерская сеть', link: '/admin/find-partners' },
-          { title: 'Трансфер бонусов', link: '/admin/transfer-bonuses' },
+          { title: 'главная', link: '/main' },
+          { title: 'Партнерская сеть', link: '/find-partners' },
+          { title: 'Трансфер бонусов', link: '/transfer-bonuses' },
         ],
         EN: [],
         UA: [],

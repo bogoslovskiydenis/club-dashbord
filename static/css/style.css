@@ -1,0 +1,20 @@
+  .c_container {
+    width: 1180px;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  .header_container {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    align-items: center;
+    max-width: 900px;
+  }
+  @media (max-width: 1199px) {
+    .hide_mob {
+      display: none!important;
+    }
+    .header_container {
+      max-width: 90%;
+    }
+  }

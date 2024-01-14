@@ -2,146 +2,142 @@
   <div class="c_container transferpage">
     <div class="transferpage_wrapper">
       <div class="transfer_title">
-        <div class="transfer_title_text">
-          Трансфер бонусов
-        </div>
+        <div class="transfer_title_text">Трансфер бонусов</div>
       </div>
       <div class="address_container">
         <div class="custom-input">
-          <label :class="{ 'active': inputValue }">Адрес вывода</label>
-          <input v-model="inputValue" @input="onInput" class="input_text"/>
-          <img src="/tether.svg" alt="Icon" class="custom-icon"/>
+          <label :class="{ active: inputValue }">Адрес вывода</label>
+          <input v-model="inputValue" class="input_text" @input="onInput" />
+          <img src="/tether.svg" alt="Icon" class="custom-icon" />
         </div>
         <div class="available_container">
-          <div class="available">
-            Доступно
-          </div>
+          <div class="available">Доступно</div>
           <div class="available_money">
-            <img src="/tether.svg" alt="">
-            <div class="available_money_text">
-              100,889.05 USDT
-            </div>
+            <img src="/tether.svg" alt="" />
+            <div class="available_money_text">100,889.05 USDT</div>
           </div>
         </div>
         <div class="input_sum_container">
           <div class="input_sum_container_input">
-            <input v-model="inputValue2" placeholder="Ввести сумму" class="input_text" @input="onInput"/>
-
+            <input
+              v-model="inputValue2"
+              placeholder="Ввести сумму"
+              class="input_text"
+              @input="onInput"
+            />
           </div>
         </div>
         <div class="input_btn_sum">
-          <v-btn
-            width="180px"
-            rounded="16"
-            min-width="164"
-            color="#C500CB"
-          >
+          <v-btn width="180px" rounded min-width="164" color="#C500CB">
             Вывести
           </v-btn>
         </div>
       </div>
     </div>
     <div class="history_payment">
-      <div class="history_payment_text">
-        История выводов
-      </div>
+      <div class="history_payment_text">История выводов</div>
       <TableApp :header="headers" :history="history">
-
-      <template v-slot:items="props">
-          <td class="red"> {{ props.item.name }}</td>
+        <template #items="props">
+          <td class="red">{{ props.item.name }}</td>
           <td class="text-xs-right">{{ props.item.bonus }}</td>
           <td class="text-xs-right">{{ props.item.allmoney }}</td>
           <td class="text-xs-right">{{ props.item.test }}</td>
         </template>
       </TableApp>
-
     </div>
   </div>
 </template>
 
 <script>
-import TableApp from "@/components/table/table.vue";
+import TableApp from '@/components/table/table.vue'
 
 export default {
   name: 'TransferBonusesPage',
-  components: {TableApp},
-  layout: "admin",
+  components: { TableApp },
+  layout: 'admin',
   data() {
     return {
       inputValue: '',
-      inputValue2: "",
+      inputValue2: '',
       iconSrc: '/tether.svg',
       headers: [
-        {text: 'Дата', align: 'left', sortable: false, value: 'name'},
-        {text: 'Статус', value: 'status'},
-        {text: 'Сумма', value: 'allmoney'},
+        { text: 'Дата', align: 'left', sortable: false, value: 'name' },
+        { text: 'Статус', value: 'status' },
+        { text: 'Сумма', value: 'allmoney' },
       ],
       history: [
         {
           name: '9-10-2023 8:00',
           status: 'В ОБРАБОТКЕ',
-          allmoney: "$ 100",
+          allmoney: '$ 100',
         },
         {
           name: '9-10-2023 8:01',
           status: 'УСПЕШНО',
-          allmoney: "$ 102",
+          allmoney: '$ 102',
         },
         {
           name: '9-10-2023 8:02',
           status: 'ОТКЛОНЕНО',
-          allmoney: "$ 103",
+          allmoney: '$ 103',
         },
         {
           name: '9-10-2023 8:03',
           status: 'ОТКЛОНЕНО',
-          allmoney: "$ 10131",
-        },{
+          allmoney: '$ 10131',
+        },
+        {
           name: '9-10-2023 8:37',
           status: 'ОТКЛОНЕНО',
-          allmoney: "$ 1312312",
-        },{
+          allmoney: '$ 1312312',
+        },
+        {
           name: '9-10-2023 8:37',
           status: 'ОТКЛОНЕНО',
-          allmoney: "$ 12345678",
-        },{
+          allmoney: '$ 12345678',
+        },
+        {
           name: '9-10-2023 8:37',
           status: 'ОТКЛОНЕНО',
-          allmoney: "$ 12345678",
-        },{
+          allmoney: '$ 12345678',
+        },
+        {
           name: '9-10-2023 8:37',
           status: 'ОТКЛОНЕНО',
-          allmoney: "$ 12345678",
-        },{
+          allmoney: '$ 12345678',
+        },
+        {
           name: '9-10-2023 8:37',
           status: 'ОТКЛОНЕНО',
-          allmoney: "$ 12345678",
-        },{
+          allmoney: '$ 12345678',
+        },
+        {
           name: '9-10-2023 8:37',
           status: 'ОТКЛОНЕНО',
-          allmoney: "$ 12345678",
-        },{
+          allmoney: '$ 12345678',
+        },
+        {
           name: '9-10-2023 8:37',
           status: 'ОТКЛОНЕНО',
-          allmoney: "$ 12345678",
-        },{
+          allmoney: '$ 12345678',
+        },
+        {
           name: '9-10-2023 8:37',
           status: 'ОТКЛОНЕНО',
-          allmoney: "$ 12345678",
+          allmoney: '$ 12345678',
         },
       ],
-    };
+    }
   },
   methods: {
-    onInput() {
-    }
-  }
+    onInput() {},
+  },
 }
 </script>
 
-<style>
+<style scoped>
 .transferpage_wrapper {
-  padding-top: 37px;
+  padding-top: 65px;
 }
 
 .available_container {
@@ -158,10 +154,10 @@ export default {
 
 .available_money_text {
   align-self: stretch;
-  color: #FFF;
+  color: #fff;
 
   /* Input/Value */
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -181,7 +177,7 @@ export default {
   color: rgba(255, 255, 255, 0.45);
 
   /* Input/Value */
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -198,10 +194,10 @@ export default {
 }
 
 .input_text {
-  color: #FFF;
+  color: #fff;
 
   /* Input/Value */
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
@@ -216,7 +212,6 @@ export default {
   margin-bottom: 20px;
   border-radius: 14px;
   background: rgba(255, 255, 255, 0.08);
-
 }
 
 label {
@@ -226,10 +221,10 @@ label {
   top: 50%;
   transform: translateY(-50%);
   transition: 0.2s ease all;
-  color: rgba(255, 255, 255, 0.50);
+  color: rgba(255, 255, 255, 0.5);
 
   /* Input/Label2 */
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 12px;
   font-style: normal;
   font-weight: 500;
@@ -246,7 +241,7 @@ input {
 .active {
   transform: translateY(-20px);
   font-size: 0.8em;
-  color: rgba(255, 255, 255, 0.50);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .custom-icon {
@@ -260,14 +255,14 @@ input {
 .transfer_title {
   padding: 20px;
   border-radius: 12px;
-  border: 1px solid #A783F3;
-  background: rgba(255, 255, 255, 0.20);
+  border: 1px solid #a783f3;
+  background: rgba(255, 255, 255, 0.2);
 }
 
 .transfer_title_text {
-  color: rgba(255, 255, 255, 0.80);
+  color: rgba(255, 255, 255, 0.8);
   /* Header/01 */
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 36px;
   font-style: normal;
   font-weight: 700;
@@ -281,16 +276,16 @@ input {
 
 .history_payment_text {
   padding: 24px 28px 24px 28px;
-  color: #FFFEF1;
+  color: #fffef1;
   /* Title/04 */
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
   line-height: 20px; /* 100% */
 }
 @media (max-width: 768px) {
-  .address_container{
+  .address_container {
     flex-wrap: wrap;
     /*display: compact;*/
   }

@@ -2,15 +2,18 @@
   <header class="header">
     <div class="c_container header_container">
       <Logo />
-      <NavBarLink />
-      <SearchBtn v-if="device !== 'MOB'" />
+      <NavBarLink v-if="login">
+        <Search v-if="device !== 'DC' && login" />
+      </NavBarLink>
       <div class="header_right">
+        <Search v-if="login" />
         <Registration />
         <LanguageSelector />
         <v-icon
-          v-if="device !== 'DC'"
+          v-if="device !== 'DC' && login"
           large
           color="white"
+          class="hide_dc"
           :class="{ hide: stateBurger }"
           @click="showMenu"
         >
@@ -23,14 +26,15 @@
 <script>
 import Logo from './logo.vue'
 import NavBarLink from './navbar.vue'
-import SearchBtn from './search-btn.vue'
+import Search from './search.vue'
 import Registration from './registrationBtn.vue'
 import LanguageSelector from './language-selector.vue'
 import device from '~/mixins/device'
+import userMixin from '~/mixins/user'
 export default {
   name: 'HeaderApp',
-  components: { Logo, NavBarLink, SearchBtn, Registration, LanguageSelector },
-  mixins: [device],
+  components: { Logo, NavBarLink, Search, Registration, LanguageSelector },
+  mixins: [device, userMixin],
   computed: {
     stateBurger() {
       const menu = this.$store.getters['menu/getStateMenu']
@@ -50,12 +54,6 @@ export default {
   padding: 12px 0px;
   border-bottom: 1px solid #8b8b8b;
 }
-.header_container {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  align-items: center;
-}
 .header_right {
   display: flex;
   gap: 20px;
@@ -70,6 +68,11 @@ export default {
   }
   .header_right {
     gap: 10px;
+  }
+}
+@media (min-width: 1200px) {
+  .hide_dc {
+    display: none;
   }
 }
 </style>

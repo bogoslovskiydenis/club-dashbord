@@ -1,5 +1,5 @@
 <template>
-  <div class="reg_button">
+  <div class="reg_button hide_mob">
     <button v-if="login" href="" @click="onLogout">{{ t('EXIT') }}</button>
     <button v-else href="">{{ t('ENTER') }}</button>
   </div>
