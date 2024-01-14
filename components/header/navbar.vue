@@ -3,14 +3,16 @@
     <v-icon large color="white" class="burger_icon" @click="hideMenu">
       mdi-backburger
     </v-icon>
-    <ul>
-      <li v-for="item in menu[config.LANG]" :key="item.title">
-        <NuxtLink no-prefetch :to="item.link" aligns="center">
-          <span @click="hideMenu">{{ item.title }}</span>
-        </NuxtLink>
-      </li>
-    </ul>
-    <slot></slot>
+    <div>
+      <ul>
+        <li v-for="item in menu[config.LANG]" :key="item.title">
+          <NuxtLink no-prefetch :to="item.link" aligns="center">
+            <span @click="hideMenu">{{ item.title }}</span>
+          </NuxtLink>
+        </li>
+      </ul>
+      <slot></slot>
+    </div>
   </div>
 </template>
 
@@ -131,6 +133,11 @@ a {
   .navbar_wrapper ul li a {
     color: white;
     font-size: 15px;
+  }
+}
+@media (max-width: 1199px) {
+  .navbar_wrapper {
+    flex-wrap: wrap;
   }
 }
 </style>

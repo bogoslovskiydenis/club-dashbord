@@ -10,11 +10,19 @@
     align-items: center;
     max-width: 900px;
   }
+  .hide {
+    display: none!important;
+  }
   @media (max-width: 1199px) {
     .hide_mob {
       display: none!important;
     }
     .header_container {
       max-width: 90%;
+    }
+  }
+  @media (min-width: 1200px) {
+    .hide_dc {
+      display: none!important;
     }
   }

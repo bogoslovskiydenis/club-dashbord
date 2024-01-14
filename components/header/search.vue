@@ -1,5 +1,5 @@
 <template>
-  <div class="search hide_mob">
+  <div class="search">
     <div class="search_wrapper">
       <input type="text" :placeholder="t('SEARCH')" class="search_input" />
     </div>

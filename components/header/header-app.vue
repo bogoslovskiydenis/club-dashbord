@@ -3,18 +3,22 @@
     <div class="c_container header_container">
       <Logo />
       <NavBarLink v-if="login">
-        <Search v-if="device !== 'DC' && login" />
+        <div v-if="device !== 'DC'" class="mobile_wrapper">
+          <Search />
+          <div class="wrapper_registration">
+            <Registration />
+          </div>
+        </div>
       </NavBarLink>
       <div class="header_right">
-        <Search v-if="login" />
-        <Registration />
+        <Search v-if="device === 'DC' && login" />
+        <Registration v-if="device === 'DC' && login" />
         <LanguageSelector />
         <v-icon
           v-if="device !== 'DC' && login"
           large
           color="white"
-          class="hide_dc"
-          :class="{ hide: stateBurger }"
+          :class="{ hide: stateBurger, hide_dc: true }"
           @click="showMenu"
         >
           mdi-menu
@@ -59,6 +63,13 @@ export default {
   gap: 20px;
   align-items: center;
 }
+.mobile_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 15px;
+  gap: 15px;
+}
 @media (max-width: 767px) {
   .hide {
     opacity: 0;
@@ -68,6 +79,13 @@ export default {
   }
   .header_right {
     gap: 10px;
+  }
+}
+@media (max-width: 1199px) {
+  .wrapper_registration {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }
 @media (min-width: 1200px) {

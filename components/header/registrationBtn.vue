@@ -1,7 +1,7 @@
 <template>
-  <div class="reg_button hide_mob">
-    <button v-if="login" href="" @click="onLogout">{{ t('EXIT') }}</button>
-    <button v-else href="">{{ t('ENTER') }}</button>
+  <div class="reg_button">
+    <button v-if="login" @click="onLogout">{{ t('EXIT') }}</button>
+    <button v-else>{{ t('ENTER') }}</button>
   </div>
 </template>
 
@@ -14,6 +14,7 @@ export default {
   methods: {
     onLogout() {
       this.logout()
+      this.$store.dispatch('menu/setStateMenu', false)
     },
   },
 }
@@ -27,6 +28,7 @@ export default {
   align-items: center;
   border-radius: 16px;
   background: #112130;
+  max-width: 250px;
 }
 
 .reg_button a {
