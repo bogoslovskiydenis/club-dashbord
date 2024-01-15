@@ -7,92 +7,67 @@
       </div>
       <div class="c_container profile_tables">
         <div class="profiles_text">Данные участников сетки</div>
-        <TableApp :header="datatable" :history="historyfind">
-          <template #header="props">
-            <td class="red">{{ props.item.name }}</td>
-            <td class="text-xs-right">{{ props.item.bonus }}</td>
-            <td class="text-xs-right">{{ props.item.allmoney }}</td>
-            <td class="text-xs-right">{{ props.item.test }}</td>
-          </template>
-        </TableApp>
+        <v-container>
+          <!-- v-data-table -->
+          <v-data-table
+            :headers="headers"
+            :items="items"
+            @click:row="onRowClick"
+          >
+          </v-data-table>
+
+          <!-- Dynamic v-expansion-panel -->
+          <v-expansion-panels>
+            <v-expansion-panel v-for="item in expandedItems" :key="item.id">
+              <v-expansion-panel-header>
+                {{ item.name }}
+              </v-expansion-panel-header>
+              <v-expansion-panel-content>
+                {{ item.description }}
+              </v-expansion-panel-content>
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </v-container>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import TableApp from '~/components/table/table.vue'
 
 export default {
   name: 'FindPartnersPage',
-  components: { TableApp },
   layout: 'admin',
   data() {
     return {
-      datatable: [
-        { text: 'Никнейм', align: 'left', sortable: false, value: 'nickname' },
-        { text: 'Уровень', value: 'levl' },
-        { text: 'Сумма', value: 'allmoney' },
+      headers: [
+        { text: 'ID', value: 'id' },
+        { text: 'Name', value: 'name' },
+        { text: 'Description', value: 'description' },
       ],
-      historyfind: [
-        {
-          nickname: 'Елтон Джон1',
-          levl: 1,
-          allmoney: '$ 56565',
-        },
-        {
-          nickname: 'Елтон Джон2',
-          levl: 2,
-          allmoney: '$ 42323',
-        },
-        {
-          nickname: 'Елтон Джон3',
-          levl: 3,
-          allmoney: '$ 44523',
-        },
-        {
-          nickname: 'Елтон Джон4',
-          levl: 4,
-          allmoney: '$ 89898',
-        },
-        {
-          nickname: 'Елтон Джон5',
-          levl: 5,
-          allmoney: '$ 7687',
-        },
-        {
-          nickname: 'Елтон Джон11',
-          levl: 1,
-          allmoney: '$ 464',
-        },
-        {
-          nickname: 'Елтон Джон14',
-          levl: 4,
-          allmoney: '$ 135',
-        },
-        {
-          nickname: 'Елтон Джон13',
-          levl: 3,
-          allmoney: '$ 111',
-        },
-        {
-          nickname: 'Елтон Джон12',
-          levl: 2,
-          allmoney: '$ 231',
-        },
-        {
-          nickname: 'Елтон Джон111',
-          levl: 1,
-          allmoney: '$ 232',
-        },
-        {
-          nickname: 'Елтон Джон1123',
-          levl: 1,
-          allmoney: '$ 312312',
-        },
+      items: [
+        { id: 1, name: 'Item 1', description: 'Description 1' },
+        { id: 2, name: 'Item 2', description: 'Description 2' },
+        { id: 2, name: 'Item 3', description: 'Description 3' },
+        { id: 2, name: 'Item 4', description: 'Description 4' },
+
+        // Add more items as needed
       ],
-    }
+      expandedItems: [],
+      selectedItem: null,
+    };
   },
+  methods: {
+    onRowClick(item) {
+      // Toggle expansion for the clicked item
+      const index = this.expandedItems.findIndex((i) => i.id === item.id);
+      if (index === -1) {
+        this.expandedItems.push(item);
+      } else {
+        this.expandedItems.splice(index, 1);
+      }
+    }
+  }
 }
 </script>
 
