@@ -1,7 +1,7 @@
 <template>
   <div class="navbar_logo">
     <NuxtLink no-prefetch :to="login ? '/main' : '/'" aligns="center">
-      <img src="/Logo.png" width="150px" class="logo" />
+      <img src="/LogoSVG.svg" width="150px" class="logo" />
     </NuxtLink>
   </div>
 </template>
