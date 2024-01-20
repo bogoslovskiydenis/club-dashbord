@@ -44,12 +44,14 @@ export default {
         { text: 'ID', value: 'id' },
         { text: 'Name', value: 'name' },
         { text: 'Description', value: 'description' },
+        { text: 'Mail', value: 'mail' },
+
       ],
       items: [
-        { id: 1, name: 'Item 1', description: 'Description 1' },
-        { id: 2, name: 'Item 2', description: 'Description 2' },
-        { id: 2, name: 'Item 3', description: 'Description 3' },
-        { id: 2, name: 'Item 4', description: 'Description 4' },
+        { id: 1, name: 'Item 1', description: 'Description 1' , mail:"gooo@gmail.com" },
+        { id: 2, name: 'Item 2', description: 'Description 2',mail:"gooo@gmail.com" },
+        { id: 2, name: 'Item 3', description: 'Description 3' ,mail:"gooo@gmail.com"},
+        { id: 2, name: 'Item 4', description: 'Description 4',mail:"gooo@gmail.com" },
 
         // Add more items as needed
       ],

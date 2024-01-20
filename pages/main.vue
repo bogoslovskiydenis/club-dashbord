@@ -3,7 +3,7 @@
     <div class="c_container cards_wrapper">
       <div class="cards">
         <div class="cards_inf">
-          <div class="card_text_top">Номер Пула</div>
+          <div class="card_text_top">Статус</div>
           <div class="card_text_descr_bottom">
             <div class="card_img">
               <img src="/card_img.svg" alt="" />
