@@ -11,8 +11,8 @@ export default {
     },
     methods: {
         onResize() {
-            if(window.screen.width >= 768 && window.screen.width <= 1200) this.device = 'TABLET'
-            else if(window.screen.width <= 768) this.device = 'MOB'
+            if(window.innerWidth >= 768 && window.innerWidth <= 1200) this.device = 'TABLET'
+            else if(window.innerWidth <= 768) this.device = 'MOB'
             else this.device = 'DC'
         }
     }
