@@ -7,27 +7,40 @@
       </div>
       <div class="c_container profile_tables">
         <div class="profiles_text">Данные участников сетки</div>
-        <v-container>
-          <!-- v-data-table -->
-          <v-data-table
-            :headers="headers"
-            :items="items"
-            @click:row="onRowClick"
-          >
-          </v-data-table>
-
-          <!-- Dynamic v-expansion-panel -->
-          <v-expansion-panels>
-            <v-expansion-panel v-for="item in expandedItems" :key="item.id">
-              <v-expansion-panel-header>
-                {{ item.name }}
-              </v-expansion-panel-header>
-              <v-expansion-panel-content>
-                {{ item.description }}
-              </v-expansion-panel-content>
-            </v-expansion-panel>
-          </v-expansion-panels>
-        </v-container>
+        <v-data-table
+          :headers="header"
+          :expanded.sync="expanded"
+          :items="userexpanded"
+          item-key="name"
+          show-expand
+          class="elevation-2"
+        >
+          <template v-slot:expanded-item="{ item }">
+            <td>
+              <p v-for="source in item.sources" :key="source.name">
+                {{ source.name }}
+              </p>
+            </td>
+            <td>
+              <p v-for="source in item.sources" :key="source.lvl">
+                {{ source.lvl }}
+              </p>
+            </td>
+            <td>
+              <p v-for="source in item.sources" :key="source.fat">
+                {{ source.sum }}
+              </p>
+            </td>
+          </template>
+          <!--       <template v-slot:expanded-item="{ item }">
+                  <tr v-for="source in item.sources">
+                    <td>{{source.name}}</td>
+                    <td>{{source.calories}}</td>
+                    <td>{{source.fat}}</td>
+                    <td>{{source.carbs}}</td>
+                  </tr>
+                </template> -->
+        </v-data-table>
       </div>
     </div>
   </div>
@@ -47,8 +60,9 @@ export default {
       items: [
         { id: 1, name: 'Item 1', description: 'Description 1' },
         { id: 2, name: 'Item 2', description: 'Description 2' },
-        { id: 3, name: 'Item 3', description: 'Description 3' },
-        { id: 4, name: 'Item 4', description: 'Description 4' },
+        { id: 2, name: 'Item 3', description: 'Description 3' },
+        { id: 2, name: 'Item 4', description: 'Description 4' },
+
         // Add more items as needed
       ],
       expandedItems: [],

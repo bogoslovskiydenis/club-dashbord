@@ -6,7 +6,7 @@
       </div>
       <div class="address_container">
         <div class="custom-input">
-          <label :class="{ active: inputValue }">Адрес вывода</label>
+          <label :class="{ active: inputValue }">Адрес вывода(TRC 20)</label>
           <input v-model="inputValue" class="input_text" @input="onInput"/>
           <img src="/tether.svg" alt="Icon" class="custom-icon"/>
         </div>

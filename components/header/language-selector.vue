@@ -2,7 +2,7 @@
   <div class="language_selector">
     <div class="flag">
       <img src="/flag.svg" alt="" />
-      <div class="flag_text">РУС</div>
+      <div class="flag_text"> РУС</div>
     </div>
   </div>
 </template>
@@ -25,5 +25,6 @@ export default {
   font-style: normal;
   font-weight: 500;
   line-height: 20px; /* 166.667% */
+  padding-left: 5px;
 }
 </style>
