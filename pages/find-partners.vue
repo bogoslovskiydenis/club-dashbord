@@ -34,7 +34,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'FindPartnersPage',
   layout: 'admin',
@@ -48,26 +47,25 @@ export default {
       items: [
         { id: 1, name: 'Item 1', description: 'Description 1' },
         { id: 2, name: 'Item 2', description: 'Description 2' },
-        { id: 2, name: 'Item 3', description: 'Description 3' },
-        { id: 2, name: 'Item 4', description: 'Description 4' },
-
+        { id: 3, name: 'Item 3', description: 'Description 3' },
+        { id: 4, name: 'Item 4', description: 'Description 4' },
         // Add more items as needed
       ],
       expandedItems: [],
       selectedItem: null,
-    };
+    }
   },
   methods: {
     onRowClick(item) {
       // Toggle expansion for the clicked item
-      const index = this.expandedItems.findIndex((i) => i.id === item.id);
+      const index = this.expandedItems.findIndex((i) => i.id === item.id)
       if (index === -1) {
-        this.expandedItems.push(item);
+        this.expandedItems.push(item)
       } else {
-        this.expandedItems.splice(index, 1);
+        this.expandedItems.splice(index, 1)
       }
-    }
-  }
+    },
+  },
 }
 </script>
 
