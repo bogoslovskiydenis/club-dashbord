@@ -78,5 +78,15 @@ export default {
         UA: 'пошук',
         RU: 'поиск',
         EN: 'search'
+    },
+    ACTIVE: {
+        UA: 'активний',
+        RU: 'активен',
+        EN: 'active'
+    },
+    NOT_ACTIVE: {
+        UA: 'не активний',
+        RU: 'не активен',
+        EN: 'not active'
     }
 }

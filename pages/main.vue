@@ -5,10 +5,10 @@
         <div class="cards_inf">
           <div class="card_text_top">Статус</div>
           <div class="card_text_descr_bottom">
-            <div class="card_img">
+            <div>
               <img src="/card_img.svg" alt="" />
             </div>
-            <div class="card_text_descr">Пул № 1</div>
+            <div class="card_text_descr">{{ t('ACTIVE') }}</div>
           </div>
         </div>
       </div>
@@ -100,12 +100,13 @@
 import { Doughnut } from 'vue-chartjs'
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js'
 import TableApp from '~/components/table/table'
-
+import translate from '~/mixins/translate'
 ChartJS.register(ArcElement, Tooltip, Legend)
 
 export default {
   name: 'AdminMainPage',
   components: { TableApp, Doughnut },
+  mixins: [translate],
   layout: 'admin',
   data() {
     return {
@@ -284,11 +285,18 @@ export default {
         },
       ],
       chartData: {
-        labels: ['Петя', 'Вася', 'Коля' , 'Жеея' , 'Леша' , 'Jack'],
+        labels: ['Петя', 'Вася', 'Коля', 'Жеея', 'Леша', 'Jack'],
         datasets: [
           {
-            backgroundColor: ['#2bc71a', '#E46651', '#00D8FF', '#c79f1b','#c2369a','#c2369a'],
-            data: [40, 20, 80, 10, 30,11, 25],
+            backgroundColor: [
+              '#2bc71a',
+              '#E46651',
+              '#00D8FF',
+              '#c79f1b',
+              '#c2369a',
+              '#c2369a',
+            ],
+            data: [40, 20, 80, 10, 30, 11, 25],
           },
         ],
       },
@@ -326,9 +334,9 @@ export default {
 .cards_inf {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-end;
   gap: 16px;
+  height: 100%;
 }
 
 .card_text_top {
@@ -347,6 +355,7 @@ export default {
   padding: 1.488px 4.037px 1.489px 4.037px;
   justify-content: center;
   align-items: center;
+  height: 40px;
 }
 
 .card_text_descr {
@@ -409,6 +418,10 @@ export default {
   flex-shrink: 0;
   align-self: stretch;
 }
+.card_img {
+  margin-left: 10px;
+  display: block;
+}
 
 @media (max-width: 768px) {
   .cards_wrapper {
@@ -422,10 +435,10 @@ export default {
     justify-content: center;
     align-items: center;
   }
-  .history_transfer_left{
+  .history_transfer_left {
     width: 100%;
   }
-  .history_transfer_right{
+  .history_transfer_right {
     width: 50%;
     display: flex;
     justify-content: center;

@@ -13,6 +13,9 @@
   .hide {
     display: none!important;
   }
+  .cursor_pointer {
+    cursor: pointer;
+  }
   @media (max-width: 1199px) {
     .hide_mob {
       display: none!important;

@@ -3,7 +3,12 @@
     <div class="parthers_container">
       <div class="c_container section_profile">
         <div class="section_profile_title">Профиль</div>
-        <div class="section_profile_subtitle">UID: 0123456789</div>
+        <div class="section_profile_subtitle">
+          UID: {{ userId }}
+          <v-icon color="white" class="cursor_pointer" @click="copy">
+            mdi-content-copy
+          </v-icon>
+        </div>
       </div>
       <div class="c_container profile_tables">
         <div class="profiles_text">Данные участников сетки</div>
@@ -15,7 +20,7 @@
           show-expand
           class="elevation-2"
         >
-          <template v-slot:expanded-item="{ item }">
+          <template #expanded-item="{ item }">
             <td>
               <p v-for="source in item.sources" :key="source.name">
                 {{ source.name }}
@@ -52,32 +57,103 @@ export default {
   layout: 'admin',
   data() {
     return {
-      headers: [
-        { text: 'ID', value: 'id' },
-        { text: 'Name', value: 'name' },
-        { text: 'Description', value: 'description' },
+      userId: '0123456789',
+      // headers: [
+      //   { text: 'ID', value: 'id' },
+      //   { text: 'Name', value: 'name' },
+      //   { text: 'Description', value: 'description' },
+      //   { text: 'Mail', value: 'mail' },
+      //
+      // ],
+      // items: [
+      //   { id: 1, name: 'Item 1', description: 'Description 1' , mail:"gooo@gmail.com" },
+      //   { id: 2, name: 'Item 2', description: 'Description 2',mail:"gooo@gmail.com" },
+      //   { id: 2, name: 'Item 3', description: 'Description 3' ,mail:"gooo@gmail.com"},
+      //   { id: 2, name: 'Item 4', description: 'Description 4',mail:"gooo@gmail.com" },
+      //
+      //   // Add more items as needed
+      // ],
+      expanded: [],
+      // groupBy:[{
+      //   key: 'name',
+      //   subInfo:"subInfo"
+      // }],
+      header: [
+        {
+          text: 'Никнейм',
+          align: 'start',
+          sortable: false,
+          value: 'name',
+          key: 'name',
+          expand: 'data-table-expand',
+        },
+        { text: 'Уровень', value: 'lvl' },
+        { text: 'Сумма', value: 'sum' },
+        { text: 'Email', value: 'email' },
       ],
-      items: [
-        { id: 1, name: 'Item 1', description: 'Description 1' },
-        { id: 2, name: 'Item 2', description: 'Description 2' },
-        { id: 2, name: 'Item 3', description: 'Description 3' },
-        { id: 2, name: 'Item 4', description: 'Description 4' },
-
-        // Add more items as needed
+      userexpanded: [
+        {
+          name: 'Елтон Джон',
+          lvl: 1,
+          sum: '1000$',
+          email: 'google@gmail.com',
+          sources: [
+            {
+              name: 'Коля',
+              lvl: 2,
+              sum: '1000$',
+              email: 'google@gmail.com',
+            },
+            {
+              name: 'Игорь',
+              lvl: 3,
+              sum: '1000$',
+              email: 'google@gmail.com',
+            },
+            {
+              name: 'Вася',
+              lvl: 4,
+              sum: '1000321$',
+              email: 'google@gmail.com',
+            },
+          ],
+        },
+        {
+          name: 'Елтон Джон2',
+          lvl: 2,
+          sum: '1000$',
+          email: 'google@gmail.com',
+          sources: [
+            {
+              name: 'Петя',
+              lvl: 5,
+              sum: '1000$',
+              email: 'google@gmail.com',
+            },
+          ],
+        },
+        {
+          name: 'Женя',
+          lvl: 11,
+          sum: '10$',
+          email: 'google@gmail.com',
+          sources: [
+            {
+              name: 'Дед Иван))',
+              lvl: 2,
+              sum: '1$',
+              email: 'google@gmail.com',
+            },
+          ],
+        },
       ],
-      expandedItems: [],
-      selectedItem: null,
     }
   },
   methods: {
-    onRowClick(item) {
-      // Toggle expansion for the clicked item
-      const index = this.expandedItems.findIndex((i) => i.id === item.id)
-      if (index === -1) {
-        this.expandedItems.push(item)
-      } else {
-        this.expandedItems.splice(index, 1)
-      }
+    copy() {
+      try {
+        navigator.clipboard.writeText(this.userId)
+      } catch (e) {}
     },
   },
 }
@@ -92,7 +168,6 @@ export default {
   padding: 20px;
   border-radius: 12px;
   border: 1px solid #a783f3;
-
   background: rgba(255, 255, 255, 0.2);
 }
 
@@ -114,10 +189,10 @@ export default {
 
 .section_profile_subtitle {
   color: #fff;
-
+  margin-top: 10px;
   /* Body/02 */
   font-family: 'Inter', sans-serif;
-  font-size: 12px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 20px; /* 166.667% */
