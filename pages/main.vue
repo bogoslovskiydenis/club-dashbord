@@ -3,7 +3,7 @@
     <div class="c_container cards_wrapper">
       <div class="cards">
         <div class="cards_inf">
-          <div class="card_text_top">Статус</div>
+          <div class="card_text_top">{{ t('STATUS') }}</div>
           <div class="card_text_descr_bottom">
             <div>
               <img src="/card_img.svg" alt="" />
@@ -14,7 +14,7 @@
       </div>
       <div class="cards">
         <div class="cards_inf">
-          <div class="card_text_top">Уровень аккаунта</div>
+          <div class="card_text_top">{{ t('ACCOUNT_LEVEL') }}</div>
           <div class="card_text_descr_bottom">
             <div class="card_text_descr">№3</div>
           </div>
@@ -22,7 +22,7 @@
       </div>
       <div class="cards">
         <div class="cards_inf">
-          <div class="card_text_top">Текущий бонус уровня</div>
+          <div class="card_text_top">{{ t('CURRENT_LEVEL_BONUS') }}</div>
           <div class="card_text_descr_bottom">
             <div class="card_text_descr">100</div>
             <div class="card_img">
@@ -33,7 +33,7 @@
       </div>
       <div class="cards">
         <div class="cards_inf">
-          <div class="card_text_top">Сумма до следующего уровня</div>
+          <div class="card_text_top">{{ t('AMOUNT_NEXT_LEVEL') }}</div>
           <div class="card_text_descr_bottom">
             <div class="card_text_descr">100</div>
             <div class="card_img">
@@ -44,7 +44,7 @@
       </div>
       <div class="cards">
         <div class="cards_inf">
-          <div class="card_text_top">Баланс бонусов</div>
+          <div class="card_text_top">{{ t('BONUS_BALANCE') }}</div>
           <div class="card_text_descr_bottom">
             <div class="card_text_descr">100</div>
             <div class="card_img">
@@ -57,7 +57,7 @@
 
     <div class="c_container history_transfer">
       <div class="history_transfer_left_border">
-        <div class="history_transfer_left_text">История начислений</div>
+        <div class="history_transfer_left_text">{{ t('ACCRUAL_HISTORY') }}</div>
       </div>
       <div class="history_transfer_wrapper">
         <div class="history_transfer_left">
@@ -80,7 +80,7 @@
     </div>
     <div class="c_container data_transfer">
       <div class="data_transfer_text_border">
-        <div class="data_transfer_text">Данные структуры</div>
+        <div class="data_transfer_text">{{ t('STRUCTURE_DATA') }}</div>
       </div>
       <div class="data_transfer_table">
         <TableApp :header="headersBottom" :history="historyBottom">
@@ -110,11 +110,6 @@ export default {
   layout: 'admin',
   data() {
     return {
-      headers: [
-        { text: 'Дата', align: 'left', sortable: false, value: 'name' },
-        { text: 'Тип бонуса', value: 'bonus' },
-        { text: 'Сумма', value: 'allmoney' },
-      ],
       history: [
         {
           name: '9-10-2023 8:01',
@@ -176,13 +171,6 @@ export default {
           bonus: 'За достижение',
           allmoney: '$ 12345678',
         },
-      ],
-      headersBottom: [
-        { text: 'Дата', align: 'left', sortable: false, value: 'datatime' },
-        { text: 'Время', value: 'time' },
-        { text: 'Никнейм', value: 'nickname' },
-        { text: 'Сумма', value: 'sum' },
-        { text: 'Бонус', value: 'bonus' },
       ],
       historyBottom: [
         {
@@ -306,6 +294,29 @@ export default {
         responsive: true,
       },
     }
+  },
+  computed: {
+    headers() {
+      return [
+        { text: this.t('DATA'), align: 'left', sortable: false, value: 'name' },
+        { text: this.t('BONUS_TYPE'), value: 'bonus' },
+        { text: this.t('SUM'), value: 'allmoney' },
+      ]
+    },
+    headersBottom() {
+      return [
+        {
+          text: this.t('DATA'),
+          align: 'left',
+          sortable: false,
+          value: 'datatime',
+        },
+        { text: this.t('TIME'), value: 'time' },
+        { text: this.t('NICKNAME'), value: 'nickname' },
+        { text: this.t('SUM'), value: 'sum' },
+        { text: this.t('BONUS'), value: 'bonus' },
+      ]
+    },
   },
 }
 </script>

@@ -2,7 +2,7 @@
   <div class="partners">
     <div class="parthers_container">
       <div class="c_container section_profile">
-        <div class="section_profile_title">Профиль</div>
+        <div class="section_profile_title">{{ t('PROFILE') }}</div>
         <div class="section_profile_subtitle">
           UID: {{ userId }}
           <v-icon color="white" class="cursor_pointer" @click="copy">
@@ -11,7 +11,7 @@
         </div>
       </div>
       <div class="c_container profile_tables">
-        <div class="profiles_text">Данные участников сетки</div>
+        <div class="profiles_text">{{ t('NETWORK_PARTICIPANTS_DATA') }}</div>
         <v-data-table
           :headers="header"
           :expanded.sync="expanded"
@@ -52,8 +52,10 @@
 </template>
 
 <script>
+import translate from '~/mixins/translate'
 export default {
   name: 'FindPartnersPage',
+  mixins: [translate],
   layout: 'admin',
   data() {
     return {
@@ -78,19 +80,6 @@ export default {
       //   key: 'name',
       //   subInfo:"subInfo"
       // }],
-      header: [
-        {
-          text: 'Никнейм',
-          align: 'start',
-          sortable: false,
-          value: 'name',
-          key: 'name',
-          expand: 'data-table-expand',
-        },
-        { text: 'Уровень', value: 'lvl' },
-        { text: 'Сумма', value: 'sum' },
-        { text: 'Email', value: 'email' },
-      ],
       userexpanded: [
         {
           name: 'Елтон Джон',
@@ -148,6 +137,23 @@ export default {
         },
       ],
     }
+  },
+  computed: {
+    header() {
+      return [
+        {
+          text: this.t('NICKNAME'),
+          align: 'start',
+          sortable: false,
+          value: 'name',
+          key: 'name',
+          expand: 'data-table-expand',
+        },
+        { text: this.t('LEVEL'), value: 'lvl' },
+        { text: this.t('SUM'), value: 'sum' },
+        { text: 'Email', value: 'email' },
+      ]
+    },
   },
   methods: {
     copy() {

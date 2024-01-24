@@ -2,43 +2,43 @@
   <div class="c_container transferpage">
     <div class="transferpage_wrapper">
       <div class="transfer_title">
-        <div class="transfer_title_text">Трансфер бонусов</div>
+        <div class="transfer_title_text">{{ t('TRANSFER_BONUSES') }}</div>
       </div>
       <div class="address_container">
         <div class="custom-input">
-          <label :class="{ active: inputValue }">Адрес вывода(TRC 20)</label>
-          <input v-model="inputValue" class="input_text" @input="onInput"/>
-          <img src="/tether.svg" alt="Icon" class="custom-icon"/>
+          <label :class="{ active: inputValue }">
+            {{ t('OUTPUT_ADDRESS') }}(TRC 20)
+          </label>
+          <input v-model="inputValue" class="input_text" @input="onInput" />
+          <img src="/tether.svg" alt="Icon" class="custom-icon" />
         </div>
         <div class="available_container">
-          <div class="available">Доступно</div>
+          <div class="available">{{ t('AVAILABLE') }}</div>
           <div class="available_money">
-            <img src="/tether.svg" alt=""/>
+            <img src="/tether.svg" alt="" />
             <div class="available_money_text">100,889.05 USDT</div>
           </div>
         </div>
         <div class="input_sum_container">
           <input
             v-model="inputValue2"
-            placeholder="Ввести сумму"
+            :placeholder="t('ENTER_AMOUNT')"
             class="input_text"
             @input="onInput"
           />
           <button class="btn_max">
-            <div class="text_max">
-              MAX
-            </div>
+            <div class="text_max">MAX</div>
           </button>
         </div>
         <div class="input_btn_sum">
           <v-btn width="180px" rounded min-width="164" color="#C500CB">
-            Вывести
+            {{ t('WITHDRAW') }}
           </v-btn>
         </div>
       </div>
     </div>
     <div class="history_payment">
-      <div class="history_payment_text">История выводов</div>
+      <div class="history_payment_text">{{ t('HISTORY_WITHDRAW') }}</div>
       <TableApp :header="headers" :history="history">
         <template #items="props">
           <td class="red">{{ props.item.name }}</td>
@@ -53,21 +53,18 @@
 
 <script>
 import TableApp from '@/components/table/table.vue'
+import translate from '~/mixins/translate'
 
 export default {
   name: 'TransferBonusesPage',
-  components: {TableApp},
+  components: { TableApp },
+  mixins: [translate],
   layout: 'admin',
   data() {
     return {
       inputValue: '',
       inputValue2: '',
       iconSrc: '/tether.svg',
-      headers: [
-        {text: 'Дата', align: 'left', sortable: false, value: 'name'},
-        {text: 'Статус', value: 'status'},
-        {text: 'Сумма', value: 'allmoney'},
-      ],
       history: [
         {
           name: '9-10-2023 8:00',
@@ -132,9 +129,17 @@ export default {
       ],
     }
   },
-  methods: {
-    onInput() {
+  computed: {
+    headers() {
+      return [
+        { text: this.t('DATA'), align: 'left', sortable: false, value: 'name' },
+        { text: this.t('STATUS'), value: 'status' },
+        { text: this.t('SUM'), value: 'allmoney' },
+      ]
     },
+  },
+  methods: {
+    onInput() {},
   },
 }
 </script>
@@ -195,10 +200,10 @@ export default {
 }
 
 .text_max {
-  color: #FFFEF1;
+  color: #fffef1;
   text-align: center;
   /* Header/1024/H-04 */
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 10px;
   font-style: normal;
   font-weight: 700;

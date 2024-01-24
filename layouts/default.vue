@@ -9,12 +9,11 @@
 
 <script>
 import HeaderApp from '~/components/header/header-app.vue'
+import router from '~/mixins/router'
 export default {
   name: 'DefaultLayout',
   components: { HeaderApp },
-  data() {
-    return {}
-  },
+  mixins: [router],
 }
 </script>
 <style>

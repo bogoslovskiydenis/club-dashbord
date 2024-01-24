@@ -11,7 +11,8 @@ export default {
         },
         logout() {
             this.$store.dispatch('user/logout')
-            this.$router.push('/')
+            const {currentLang, linkPrefixes} = this.$store.getters['lang/getLang']
+            this.$router.push(linkPrefixes[currentLang])
         }
     }
 }

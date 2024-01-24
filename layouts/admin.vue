@@ -11,12 +11,11 @@
 <script>
 import HeaderApp from '~/components/header/header-app.vue'
 import FooterApp from '~/components/footer/footer-app.vue'
+import router from '~/mixins/router'
 export default {
   name: 'AdminLayout',
   components: { HeaderApp, FooterApp },
-  data() {
-    return {}
-  },
+  mixins: [router],
 }
 </script>
 <style>

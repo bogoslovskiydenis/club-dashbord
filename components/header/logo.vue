@@ -1,6 +1,10 @@
 <template>
   <div class="navbar_logo">
-    <NuxtLink no-prefetch :to="login ? '/main' : '/'" aligns="center">
+    <NuxtLink
+      no-prefetch
+      :to="login ? `${currentLinkPrefix}main` : currentLinkPrefix"
+      aligns="center"
+    >
       <img src="/LogoSVG.svg" width="150px" class="logo" />
     </NuxtLink>
   </div>
@@ -8,9 +12,10 @@
 
 <script>
 import userMixin from '~/mixins/user'
+import translate from '~/mixins/translate'
 export default {
   name: 'LogoApp',
-  mixins: [userMixin],
+  mixins: [userMixin, translate],
 }
 </script>
 

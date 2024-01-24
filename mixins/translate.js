@@ -1,15 +1,23 @@
 import TRANSLATE from '~/translate'
-import config from '~/config'
 export default {
 	data: () => {
 		return {
 			translates: TRANSLATE,
-			config
+		}
+	},
+	computed: {
+		currentLang() {
+			const langState = this.$store.getters['lang/getLang']
+			return langState.currentLang
+		},
+		currentLinkPrefix() {
+			const { currentLang, linkPrefixes } = this.$store.getters['lang/getLang']
+			return linkPrefixes[currentLang]
 		}
 	},
 	methods: {
 		t(key){
-			return key in this.translates ? this.translates[key][this.config.LANG] : '' 
+			return key in this.translates ? this.translates[key][this.currentLang] : '' 
 		}
 	}
 }

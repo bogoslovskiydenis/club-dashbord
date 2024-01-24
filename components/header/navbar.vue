@@ -5,7 +5,11 @@
     </v-icon>
     <div>
       <ul>
-        <li v-for="item in menu[config.LANG]" :key="item.title">
+        <li
+          v-for="item in menuItems"
+          :key="item.title"
+          class="navbar_link_item"
+        >
           <NuxtLink no-prefetch :to="item.link" aligns="center">
             <span @click="hideMenu">{{ item.title }}</span>
           </NuxtLink>
@@ -31,12 +35,15 @@ export default {
     return {
       menu: {
         RU: [
-          { title: 'главная', link: '/main' },
-          { title: 'Партнерская сеть', link: '/find-partners' },
-          { title: 'Трансфер бонусов', link: '/transfer-bonuses' },
+          { title: 'главная', link: 'main' },
+          { title: 'Партнерская сеть', link: 'find-partners' },
+          { title: 'Трансфер бонусов', link: 'transfer-bonuses' },
         ],
-        EN: [],
-        UA: [],
+        EN: [
+          { title: 'main', link: 'main' },
+          { title: 'Affiliate network', link: 'find-partners' },
+          { title: 'Transfer bonuses', link: 'transfer-bonuses' },
+        ],
       },
     }
   },
@@ -44,6 +51,11 @@ export default {
     stateMenu() {
       const menu = this.$store.getters['menu/getStateMenu']
       return menu.isOpen
+    },
+    menuItems() {
+      return this.menu[this.currentLang].map((item) => {
+        return { ...item, link: `${this.currentLinkPrefix}${item.link}` }
+      })
     },
   },
   methods: {
@@ -76,6 +88,7 @@ export default {
   font-weight: 400;
   line-height: 16px; /* 114.286% */
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 ul,

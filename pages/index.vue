@@ -9,7 +9,10 @@
           <input class="input" :placeholder="t('PASSWORD')" />
         </div>
         <div class="wrapper_text">
-          <NuxtLink to="/password-recovery" class="forgot_password">
+          <NuxtLink
+            :to="currentLinkPrefix + 'password-recovery'"
+            class="forgot_password"
+          >
             {{ t('FORGOT_PASSWORD') }}
           </NuxtLink>
         </div>
@@ -38,7 +41,7 @@ export default {
         session: 'fsdfvxcadasda',
       }
       this.setUser(user)
-      this.$router.push('/main')
+      this.$router.push(`${this.currentLinkPrefix}main`)
     },
   },
 }

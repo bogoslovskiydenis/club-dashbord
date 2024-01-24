@@ -13,7 +13,7 @@
       <div class="header_right">
         <Search v-if="device === 'DC' && login" />
         <Registration v-if="device === 'DC' && login" />
-        <LanguageSelector />
+        <LanguageSelector :posts="listLangs" />
         <v-icon
           v-if="device !== 'DC' && login"
           large
@@ -35,14 +35,54 @@ import Registration from './registrationBtn.vue'
 import LanguageSelector from './language-selector.vue'
 import device from '~/mixins/device'
 import userMixin from '~/mixins/user'
+import translate from '~/mixins/translate'
 export default {
   name: 'HeaderApp',
   components: { Logo, NavBarLink, Search, Registration, LanguageSelector },
-  mixins: [device, userMixin],
+  mixins: [device, userMixin, translate],
+  data() {
+    return {
+      listLangs: [
+        { title: 'EN', link: '', flag: '/GB.svg', lang: 'EN' },
+        { title: 'RU', link: '', flag: '/flag.svg', lang: 'RU' },
+      ],
+      langsConfig: {
+        EN: { title: 'EN', flag: '/GB.svg' },
+        RU: { title: 'RU', flag: '/flag.svg' },
+      },
+    }
+  },
   computed: {
     stateBurger() {
       const menu = this.$store.getters['menu/getStateMenu']
       return menu.isOpen
+    },
+  },
+  watch: {
+    '$route.params.search': {
+      handler: function () {
+        const path = this.$route.path
+        const clearPath = path.replace(this.currentLinkPrefix, '')
+        const { linkPrefixes } = this.$store.getters['lang/getLang']
+        const currentLangItem = {
+          ...this.langsConfig[this.currentLang],
+          link: `${linkPrefixes[this.currentLang]}${clearPath}`,
+        }
+        const langs = Object.keys(this.langsConfig).filter(
+          (item) => item !== this.currentLang
+        )
+        this.listLangs = []
+        this.listLangs.push(currentLangItem)
+        for (const lang of langs) {
+          const currentLangItem = {
+            ...this.langsConfig[lang],
+            link: `${linkPrefixes[lang]}${clearPath}`,
+          }
+          this.listLangs.push(currentLangItem)
+        }
+      },
+      deep: true,
+      immediate: true,
     },
   },
   methods: {
@@ -71,7 +111,7 @@ export default {
   gap: 15px;
 }
 @media (max-width: 767px) {
-  .mobile_wrapper{
+  .mobile_wrapper {
     display: flex;
   }
   .hide {
