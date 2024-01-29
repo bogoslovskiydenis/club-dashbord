@@ -490,10 +490,10 @@ export default {
 <style scoped>
 .cards_wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding-top: 65px;
   padding-bottom: 35px;
-  gap: 20px;
+  gap: 15px;
 }
 
 .cards {
@@ -525,6 +525,7 @@ export default {
   font-weight: 500;
   line-height: normal;
   letter-spacing: 0.32px;
+  white-space: nowrap;
 }
 
 .card_text_descr_bottom {

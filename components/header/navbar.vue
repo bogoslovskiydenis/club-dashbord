@@ -35,7 +35,7 @@ export default {
     return {
       menu: {
         RU: [
-          { title: 'Главная', link: 'Main' },
+          { title: 'Главная', link: 'main' },
           { title: 'Партнерская сеть', link: 'find-partners' },
           { title: 'Трансфер бонусов', link: 'transfer-bonuses' },
         ],
