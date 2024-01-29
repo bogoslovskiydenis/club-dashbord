@@ -6,10 +6,12 @@
       </div>
       <div class="address_container">
         <div class="custom-input">
-          <label :class="{ active: inputValue }">
-            {{ t('OUTPUT_ADDRESS') }}(TRC 20)
-          </label>
-          <input v-model="inputValue" class="input_text" @input="onInput" />
+          <input
+            v-model="inputValue"
+            :placeholder="`${t('OUTPUT_ADDRESS')} (TRC 20)`"
+            class="input_text"
+            @input="onInput"
+          />
           <img src="/tether.svg" alt="Icon" class="custom-icon" />
         </div>
         <div class="available_container">
@@ -39,7 +41,7 @@
     </div>
     <div class="history_payment">
       <div class="history_payment_text">{{ t('HISTORY_WITHDRAW') }}</div>
-      <TableApp :header="headers" :history="history">
+      <TableApp :header="headers" :history="history[currentLang]">
         <template #items="props">
           <td class="red">{{ props.item.name }}</td>
           <td class="text-xs-right">{{ props.item.bonus }}</td>
@@ -65,68 +67,132 @@ export default {
       inputValue: '',
       inputValue2: '',
       iconSrc: '/tether.svg',
-      history: [
-        {
-          name: '9-10-2023 8:00',
-          status: 'В ОБРАБОТКЕ',
-          allmoney: '$ 100',
-        },
-        {
-          name: '9-10-2023 8:01',
-          status: 'УСПЕШНО',
-          allmoney: '$ 102',
-        },
-        {
-          name: '9-10-2023 8:02',
-          status: 'ОТКЛОНЕНО',
-          allmoney: '$ 103',
-        },
-        {
-          name: '9-10-2023 8:03',
-          status: 'ОТКЛОНЕНО',
-          allmoney: '$ 10131',
-        },
-        {
-          name: '9-10-2023 8:37',
-          status: 'ОТКЛОНЕНО',
-          allmoney: '$ 1312312',
-        },
-        {
-          name: '9-10-2023 8:37',
-          status: 'ОТКЛОНЕНО',
-          allmoney: '$ 12345678',
-        },
-        {
-          name: '9-10-2023 8:37',
-          status: 'ОТКЛОНЕНО',
-          allmoney: '$ 12345678',
-        },
-        {
-          name: '9-10-2023 8:37',
-          status: 'ОТКЛОНЕНО',
-          allmoney: '$ 12345678',
-        },
-        {
-          name: '9-10-2023 8:37',
-          status: 'ОТКЛОНЕНО',
-          allmoney: '$ 12345678',
-        },
-        {
-          name: '9-10-2023 8:37',
-          status: 'ОТКЛОНЕНО',
-          allmoney: '$ 12345678',
-        },
-        {
-          name: '9-10-2023 8:37',
-          status: 'ОТКЛОНЕНО',
-          allmoney: '$ 12345678',
-        },
-        {
-          name: '9-10-2023 8:37',
-          status: 'ОТКЛОНЕНО',
-          allmoney: '$ 12345678',
-        },
-      ],
+      history: {
+        RU: [
+          {
+            name: '9-10-2023 8:00',
+            status: 'В ОБРАБОТКЕ',
+            allmoney: '$ 100',
+          },
+          {
+            name: '9-10-2023 8:01',
+            status: 'УСПЕШНО',
+            allmoney: '$ 102',
+          },
+          {
+            name: '9-10-2023 8:02',
+            status: 'ОТКЛОНЕНО',
+            allmoney: '$ 103',
+          },
+          {
+            name: '9-10-2023 8:03',
+            status: 'ОТКЛОНЕНО',
+            allmoney: '$ 10131',
+          },
+          {
+            name: '9-10-2023 8:37',
+            status: 'ОТКЛОНЕНО',
+            allmoney: '$ 1312312',
+          },
+          {
+            name: '9-10-2023 8:37',
+            status: 'ОТКЛОНЕНО',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            status: 'ОТКЛОНЕНО',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            status: 'ОТКЛОНЕНО',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            status: 'ОТКЛОНЕНО',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            status: 'ОТКЛОНЕНО',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            status: 'ОТКЛОНЕНО',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            status: 'ОТКЛОНЕНО',
+            allmoney: '$ 12345678',
+          },
+        ],
+        EN: [
+          {
+            name: '9-10-2023 8:00',
+            status: 'In processing',
+            allmoney: '$ 100',
+          },
+          {
+            name: '9-10-2023 8:01',
+            status: 'Successful',
+            allmoney: '$ 102',
+          },
+          {
+            name: '9-10-2023 8:02',
+            status: 'Declined',
+            allmoney: '$ 103',
+          },
+          {
+            name: '9-10-2023 8:03',
+            status: 'Declined',
+            allmoney: '$ 10131',
+          },
+          {
+            name: '9-10-2023 8:37',
+            status: 'Declined',
+            allmoney: '$ 1312312',
+          },
+          {
+            name: '9-10-2023 8:37',
+            status: 'Declined',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            status: 'Declined',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            status: 'Declined',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            status: 'Declined',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            status: 'Declined',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            status: 'Declined',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            status: 'Declined',
+            allmoney: '$ 12345678',
+          },
+        ],
+      },
     }
   },
   computed: {
@@ -322,7 +388,9 @@ input {
   font-weight: 500;
   line-height: 20px; /* 100% */
 }
-
+.input_btn_sum {
+  margin-top: 10px;
+}
 @media (max-width: 768px) {
   .address_container {
     flex-wrap: wrap;

@@ -35,14 +35,14 @@ export default {
     return {
       menu: {
         RU: [
-          { title: 'главная', link: 'main' },
+          { title: 'Главная', link: 'Main' },
           { title: 'Партнерская сеть', link: 'find-partners' },
           { title: 'Трансфер бонусов', link: 'transfer-bonuses' },
         ],
         EN: [
           { title: 'main', link: 'main' },
-          { title: 'Affiliate network', link: 'find-partners' },
-          { title: 'Transfer bonuses', link: 'transfer-bonuses' },
+          { title: 'Affiliate Network', link: 'find-partners' },
+          { title: 'Bonus transfer', link: 'transfer-bonuses' },
         ],
       },
     }

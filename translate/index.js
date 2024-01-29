@@ -4,8 +4,8 @@ export default {
         EN: 'enter'
     },
     EXIT: {
-        RU: 'выход',
-        EN: 'exit'
+        RU: 'Выход',
+        EN: 'Log out'
     },
     FORGOT_PASSWORD: {
         RU: 'Забыл пароль',
@@ -60,16 +60,16 @@ export default {
         EN: 'Register success'
     },
     SEARCH: {
-        RU: 'поиск',
-        EN: 'search'
+        RU: 'Поиск',
+        EN: 'Search'
     },
     ACTIVE: {
-        RU: 'активен',
-        EN: 'active'
+        RU: 'Активирован',
+        EN: 'Activated'
     },
     NOT_ACTIVE: {
-        RU: 'не активен',
-        EN: 'not active'
+        RU: 'Не активирован',
+        EN: 'Unactivated'
     },
     CURRENT_LANG: {
         RU: 'Рус',
@@ -85,11 +85,11 @@ export default {
     },
     CURRENT_LEVEL_BONUS: {
         RU: 'Текущий бонус уровня',
-        EN: 'Current level bonus'
+        EN: 'Current bonus level'
     },
     AMOUNT_NEXT_LEVEL: {
         RU: 'Сумма до следующего уровня',
-        EN: 'Amount to next level'
+        EN: 'Amount to the next level'
     },
     BONUS_BALANCE: {
         RU: 'Баланс бонусов',
@@ -97,7 +97,7 @@ export default {
     },
     ACCRUAL_HISTORY: {
         RU: 'История начислений',
-        EN: 'Accrual history' 
+        EN: 'Accruals history' 
     },
     STRUCTURE_DATA: {
         RU: 'Данные структуры',
@@ -109,15 +109,15 @@ export default {
     },
     NETWORK_PARTICIPANTS_DATA: {
         RU: 'Данные участников сетки',
-        EN: 'Network participants data' 
+        EN: 'Data of grid participants' 
     },
     TRANSFER_BONUSES: {
         RU: 'Трансфер бонусов',
-        EN: 'Transfer bonuses' 
+        EN: 'Bonus transfer' 
     },
     OUTPUT_ADDRESS: {
         RU: 'Адрес вывода',
-        EN: 'Output address' 
+        EN: 'Withdrawal address' 
     },
     AVAILABLE: {
         RU: 'Доступно',
@@ -129,15 +129,15 @@ export default {
     },
     HISTORY_WITHDRAW: {
         RU: 'История выводов',
-        EN: 'History withdraw'
+        EN: 'History of withdrawals'
     },
     ENTER_AMOUNT: {
         RU: 'Ввести сумму',
-        EN: 'Enter amount'
+        EN: 'Enter the amount'
     },
     DATA: {
         RU: 'Дата',
-        EN: 'Data'
+        EN: 'Date'
     },
     BONUS_TYPE: {
         RU: 'Тип бонуса',
@@ -145,7 +145,7 @@ export default {
     },
     SUM: {
         RU: 'Сумма',
-        EN: 'Sum' 
+        EN: 'Amount' 
     },
     TIME: {
         RU: 'Время',

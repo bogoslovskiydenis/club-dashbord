@@ -61,7 +61,7 @@
       </div>
       <div class="history_transfer_wrapper">
         <div class="history_transfer_left">
-          <TableApp :header="headers" :history="history">
+          <TableApp :header="headers" :history="history[currentLang]">
             <template #items="props">
               <td>{{ props.item.name }}</td>
               <td class="text-xs-right">{{ props.item.bonus }}</td>
@@ -83,7 +83,7 @@
         <div class="data_transfer_text">{{ t('STRUCTURE_DATA') }}</div>
       </div>
       <div class="data_transfer_table">
-        <TableApp :header="headersBottom" :history="historyBottom">
+        <TableApp :header="headersBottom" :history="historyBottom[currentLang]">
           <template #header="props">
             <td class="red">{{ props.item.name }}</td>
             <td class="text-xs-right">{{ props.item.bonus }}</td>
@@ -110,168 +110,334 @@ export default {
   layout: 'admin',
   data() {
     return {
-      history: [
-        {
-          name: '9-10-2023 8:01',
-          bonus: 'За структуру',
-          allmoney: '$ 12312',
-        },
-        {
-          name: '9-10-2023 8:32',
-          bonus: 'Бонус пула',
-          allmoney: '$ 13131256',
-        },
-        {
-          name: '9-10-2023 8:37',
-          bonus: 'За достижение',
-          allmoney: '$ 12345678',
-        },
-        {
-          name: '9-10-2023 8:37',
-          bonus: 'За достижение',
-          allmoney: '$ 12345678',
-        },
-        {
-          name: '9-10-2023 8:37',
-          bonus: 'За достижение',
-          allmoney: '$ 12345678',
-        },
-        {
-          name: '9-10-2023 8:37',
-          bonus: 'За достижение',
-          allmoney: '$ 12345678',
-        },
-        {
-          name: '9-10-2023 10:00',
-          bonus: 'За достижение',
-          allmoney: '$ 989898',
-        },
-        {
-          name: '9-10-2023 8:37',
-          bonus: 'За достижение',
-          allmoney: '$ 12345678',
-        },
-        {
-          name: '9-10-2023 8:37',
-          bonus: 'За достижение',
-          allmoney: '$ 12345678',
-        },
-        {
-          name: '9-10-2023 8:37',
-          bonus: 'За достижение',
-          allmoney: '$ 12345678',
-        },
-        {
-          name: '9-10-2023 8:37',
-          bonus: 'За достижение',
-          allmoney: '$ 12345678',
-        },
-        {
-          name: '9-10-2023 8:37',
-          bonus: 'За достижение',
-          allmoney: '$ 12345678',
-        },
-      ],
-      historyBottom: [
-        {
-          datatime: '9-10-2023',
-          time: '8:37',
-          nickname: 'Елтон Джон',
-          sum: '$ 12345678',
-          bonus: '$ 12345678',
-        },
-        {
-          datatime: '9-10-2023',
-          time: '8:37',
-          nickname: 'Рикки Мартин',
-          sum: '$ 12345678',
-          bonus: '$ 12345678',
-        },
-        {
-          datatime: '9-10-2023',
-          time: '8:37',
-          nickname: 'Джордж Майкл',
-          sum: '$ 12345678',
-          bonus: '$ 12345678',
-        },
-        {
-          datatime: '9-10-2023',
-          time: '8:37',
-          nickname: 'Елтон Джон',
-          sum: '$ 12345678',
-          bonus: '$ 12345678',
-        },
-        {
-          datatime: '9-10-2023',
-          time: '8:37',
-          nickname: 'Елтон Джон',
-          sum: '$ 12345678',
-          bonus: '$ 12345678',
-        },
-        {
-          datatime: '9-10-2023',
-          time: '8:37',
-          nickname: 'Елтон Джон',
-          sum: '$ 12345678',
-          bonus: '$ 12345678',
-        },
-        {
-          datatime: '9-10-2023',
-          time: '8:37',
-          nickname: 'Елтон Джон',
-          sum: '$ 12345678',
-          bonus: '$ 12345678',
-        },
-        {
-          datatime: '9-10-2023',
-          time: '8:37',
-          nickname: 'Елтон Джон',
-          sum: '$ 12345678',
-          bonus: '$ 12345678',
-        },
-        {
-          datatime: '9-10-2023',
-          time: '8:37',
-          nickname: 'Елтон Джон',
-          sum: '$ 12345678',
-          bonus: '$ 12345678',
-        },
-        {
-          datatime: '9-10-2023',
-          time: '8:37',
-          nickname: 'Елтон Джон',
-          sum: '$ 12345678',
-          bonus: '$ 12345678',
-        },
-        {
-          datatime: '9-10-2023',
-          time: '8:37',
-          nickname: 'Елтон Джон',
-          sum: '$ 12345678',
-          bonus: '$ 12345678',
-        },
-        {
-          datatime: '9-10-2023',
-          time: '8:37',
-          nickname: 'Елтон Джон',
-          sum: '$ 12345678',
-          bonus: '$ 12345678',
-        },
-        {
-          datatime: '9-10-2023',
-          time: '8:37',
-          nickname: 'Елтон Джон',
-          sum: '$ 12345678',
-          bonus: '$ 12345678',
-        },
-        {
-          datatime: '9-10-2023',
-          time: '8:37',
-          nickname: 'Елтон Джон',
-          sum: '$ 12345678',
-          bonus: '$ 12345678',
-        },
-      ],
+      history: {
+        RU: [
+          {
+            name: '9-10-2023 8:01',
+            bonus: 'За структуру',
+            allmoney: '$ 12312',
+          },
+          {
+            name: '9-10-2023 8:32',
+            bonus: 'Бонус пула',
+            allmoney: '$ 13131256',
+          },
+          {
+            name: '9-10-2023 8:37',
+            bonus: 'За достижение',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            bonus: 'За достижение',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            bonus: 'За достижение',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            bonus: 'За достижение',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 10:00',
+            bonus: 'За достижение',
+            allmoney: '$ 989898',
+          },
+          {
+            name: '9-10-2023 8:37',
+            bonus: 'За достижение',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            bonus: 'За достижение',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            bonus: 'За достижение',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            bonus: 'За достижение',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            bonus: 'За достижение',
+            allmoney: '$ 12345678',
+          },
+        ],
+        EN: [
+          {
+            name: '9-10-2023 8:01',
+            bonus: 'For the structure',
+            allmoney: '$ 12312',
+          },
+          {
+            name: '9-10-2023 8:32',
+            bonus: 'Pool bonus',
+            allmoney: '$ 13131256',
+          },
+          {
+            name: '9-10-2023 8:37',
+            bonus: 'For the achievement',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            bonus: 'For the achievement',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            bonus: 'For the achievement',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            bonus: 'For the achievement',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 10:00',
+            bonus: 'For the achievement',
+            allmoney: '$ 989898',
+          },
+          {
+            name: '9-10-2023 8:37',
+            bonus: 'For the achievement',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            bonus: 'For the achievement',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            bonus: 'For the achievement',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            bonus: 'For the achievement',
+            allmoney: '$ 12345678',
+          },
+          {
+            name: '9-10-2023 8:37',
+            bonus: 'For the achievement',
+            allmoney: '$ 12345678',
+          },
+        ],
+      },
+      historyBottom: {
+        RU: [
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Рикки Мартин',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Джордж Майкл',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+        ],
+        EN: [
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Рикки Мартин',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Джордж Майкл',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+          {
+            datatime: '9-10-2023',
+            time: '8:37',
+            nickname: 'Елтон Джон',
+            sum: '$ 12345678',
+            bonus: '$ 12345678',
+          },
+        ],
+      },
       chartData: {
         labels: ['Петя', 'Вася', 'Коля', 'Жеея', 'Леша', 'Jack'],
         datasets: [
